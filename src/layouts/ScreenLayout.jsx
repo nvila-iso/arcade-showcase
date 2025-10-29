@@ -6,11 +6,10 @@ const ScreenLayout = ({
   return (
     <div
       id={id}
-      className={`w-full h-full flex-1 bg-[url('/star-bg.jpg')] bg-cover bg-center ${className}`}
+      className={`w-full min-h-full bg-[url('/star-bg.jpg')] bg-cover bg-center flex ${className}`}
     >
       {children}
     </div>
   );
 };
-
 export default ScreenLayout;

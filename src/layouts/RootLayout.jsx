@@ -11,7 +11,7 @@ const RootLayout = () => {
       </header>
 
       {/* route area must be growable */}
-      <main className="mx-auto max-w-5xl w-full flex-1 flex min-h-0">
+      <main className="mx-auto max-w-5xl w-full h-full flex-1 flex min-h-0">
         <Outlet />
       </main>
 
