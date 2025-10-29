@@ -4,12 +4,14 @@ const ScreenLayout = ({
   className = "",
 }) => {
   return (
-    <div
-      id={id}
-      className={`w-full min-h-full bg-[url('/star-bg.jpg')] bg-cover bg-center flex ${className}`}
-    >
-      {children}
-    </div>
+    <>
+      <div
+        id={id}
+        className={`w-full min-h-full bg-black/90 bg-cover bg-center flex ${className}`}
+      >
+        {children}
+      </div>
+    </>
   );
 };
 export default ScreenLayout;

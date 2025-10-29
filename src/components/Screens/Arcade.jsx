@@ -15,7 +15,7 @@ const Arcade = () => {
     "Fighting",
     "Rhythm",
     "Light Gun",
-    "STG (SHMUPS)",
+    "STG (Shmups)",
     "Beat-Em-Ups",
     "Puzzle",
     "Platformer",
@@ -48,6 +48,7 @@ const Arcade = () => {
           <p className="text-2xl text-teal-400 font-semibold underline">
             Arcade Games
           </p>
+
           <div className="w-full flex gap-2">
             {/* search bar */}
             <input
