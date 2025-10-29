@@ -4,6 +4,7 @@ import ArcadeHome from "./pages/ArcadeHome.jsx";
 
 import MainScreen from "./components/Screens/MainScreen.jsx";
 import Pinball from "./components/Screens/Pinball.jsx";
+import Arcade from "./components/Screens/Arcade.jsx";
 
 const routes = [
   {
@@ -13,6 +14,7 @@ const routes = [
       { index: true, Component: ArcadeHome },
       { path: "main-screen", Component: MainScreen },
       { path: "pinball", Component: Pinball },
+      { path: "arcade", Component: Arcade },
     ],
   },
 ];

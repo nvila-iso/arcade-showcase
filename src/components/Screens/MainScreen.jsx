@@ -22,14 +22,16 @@ const MainScreen = () => {
                 <img src={pinball} alt="arcade image" className="h-[80%]" />
               </div>
             </Link>
-            <div className="flex flex-col bg-black/30 border-2 border-teal-400 rounded-sm w-64 h-96">
-              <div>
-                <p>VIDEO GAMES</p>
-                <hr className="w-[80%] mx-auto" />
-              </div>
+            <Link to="/arcade">
+              <div className="flex flex-col bg-black/30 border-2 border-teal-400 rounded-sm w-64 h-96">
+                <div>
+                  <p>VIDEO GAMES</p>
+                  <hr className="w-[80%] mx-auto" />
+                </div>
 
-              <img src={arcade} alt="arcade image" className="h-[70%]" />
-            </div>
+                <img src={arcade} alt="arcade image" className="h-[70%]" />
+              </div>
+            </Link>
           </div>
           <div className="flex justify-center gap-5 w-full text-teal-400">
             <Link
