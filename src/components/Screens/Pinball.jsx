@@ -23,7 +23,7 @@ const Pinball = () => {
                   <img
                     src={pinball.img}
                     alt={pinball.alt}
-                    className="border-2 border-white rounded-sm object-cover w-[90%] mx-auto transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(49,184,247,0.8)]"
+                    className="w-96 h-35 md:w-80 border-2 border-white rounded-sm object-cover w-[90%] mx-auto transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(49,184,247,0.8)]"
                   />
                 </Link>
               </div>

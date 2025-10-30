@@ -1,9 +1,9 @@
-import OpeningScreen from "../components/Screens/OpeningScreen";
+import OpeningScreen from "./Home";
 
 const ArcadeHome = () => {
   return (
     <>
-      <div className="bg-black/80">
+      <div className="">
       <OpeningScreen />
       </div>
     </>

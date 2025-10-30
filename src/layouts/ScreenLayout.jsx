@@ -7,7 +7,7 @@ const ScreenLayout = ({
     <>
       <div
         id={id}
-        className={`w-full min-h-full bg-black/90 bg-cover bg-center flex ${className}`}
+        className={`w-full min-h-full bg-cover bg-center flex ${className}`}
       >
         {children}
       </div>

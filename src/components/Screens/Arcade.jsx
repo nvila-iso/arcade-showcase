@@ -44,7 +44,7 @@ const Arcade = () => {
 
   // pagination
 
-  const itemsPerPage = 10; // display X amount of items per page
+  const itemsPerPage = 9; // display X amount of items per page
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -91,7 +91,7 @@ const Arcade = () => {
               ))}
             </select>
           </div>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4 mt-5">
             {currentGames.map((arcade, index) => (
               <div key={index} className="">
                 <p className="text-center text-white mb-2">{arcade.name}</p>

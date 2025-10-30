@@ -1,26 +1,6 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
-#molding-left {
-  background-color: #ffae00;
-  width: 1rem;
-  height: 100%;
-}
-
-@keyframes fade {
-  0% {
-    text-shadow: none;
-  }
-  50% {
-    text-shadow:
-      0 0 8px #31b8f7,
-      0 0 16px #31b8f7,
-      0 0 24px #31b8f7;
-  }
-  100% {
-    text-shadow: none;
-  }
-}
-
-.continue {
-  animation: fade 2s ease-in-out infinite;
+body {
+  background-color: lightblue;
 }
