@@ -6,10 +6,15 @@
 }
 
 body {
-  background-color: lightblue;
+  background-color: #099cc2;
 }
 
 .title {
   -webkit-text-stroke: 2px darkblue;
   text-stroke: 2px darkblue;
+}
+
+.price-stroke {
+  -webkit-text-stroke: 2px #0A0A5F; /* Stroke width and color */
+  text-stroke: 2px black; /* Fallback for future compatibility */
 }

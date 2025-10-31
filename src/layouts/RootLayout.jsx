@@ -6,7 +6,7 @@ const RootLayout = () => {
   return (
     // RootLayout.jsx (key parts)
   
-    <div className="min-h-screen  bg-cover bg-center flex flex-col">
+    <div className="min-h-screen bg-cover bg-center flex flex-col">
 
 
       {/* route area must be growable */}
