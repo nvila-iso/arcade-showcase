@@ -7,7 +7,7 @@ const Home = () => {
     <div className="max-w-6xl flex flex-col md:flex-row overflow-hidden flex h-screen">
       <div className="md:relative md:top-50 md:left-10">
         <Link to="">
-          <p className="font-archivo text-6xl text-center md:text-left text-[#E4494F] mb-5 text-shadow-[-3px_3px_0px_rgb(0_0_0_/_1)] mt-5 title">
+          <p className="font-lilita text-6xl text-center md:text-left text-[#E4494F] mb-5 text-shadow-[-3px_3px_0px_rgb(0_0_0_/_1)] mt-5 title">
             ARCADIA MANOR
           </p>
         </Link>

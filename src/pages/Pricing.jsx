@@ -14,7 +14,7 @@ const Pricing = () => {
             </p>
           </Link>
           <Link to="">
-            <img src={logo} alt="" className="w-40 relative bottom-10" />
+            <img src={logo} alt="" className="w-40 relative bottom-5" />
           </Link>
 
           <Link to="/games">
@@ -49,10 +49,14 @@ const Pricing = () => {
               </p>
             </div>
           </div>
-          <p className="italic font-semibold p-2 text-center">
-            ALL must pay admission. Leave your meek indifference outside - we
-            have no need of it.
-          </p>
+          <div className="grid grid-cols-[30px_1fr] justify-center items-center mt-3 mb-3 border-3 rounded">
+            <p className="text-2xl font-semibold bg-black text-yellow-300 text-center">!</p>
+            <p className="italic font-semibold text-center text-white py-1 pl-2 pr-1 bg-[#E4494F]">
+              ALL must pay admission. Leave your meek indifference outside - we
+              have no need of it.
+            </p>
+          </div>
+
           <p className="text-xl w-[76%] md:w-[50%] text-center rounded-t-lg font-black bg-blue-500 text-sky-200 px-5 py-1 border-x-3 border-t-3 border-black">
             HOURS
           </p>

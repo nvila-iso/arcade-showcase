@@ -44,7 +44,7 @@ const Photos = () => {
                 <img
                   src={p.url}
                   alt={p.alt || ""}
-                  className="w-full aspect-video object-cover border-2 border-blue-800 rounded-sm transition-transform duration-300 group-hover:scale-105"
+                  className="w-full aspect-video object-cover border-5 border-blue-800 rounded-sm transition-transform duration-300 group-hover:scale-105"
                 />
                 <span className="absolute bottom-1 right-1 text-[10px] bg-black/70 px-1 rounded">
                   View
