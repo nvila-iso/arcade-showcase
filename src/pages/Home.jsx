@@ -13,7 +13,7 @@ const Home = () => {
         </Link>
         <div className="flex font-black text-center justify-center items-center md:justify-start">
           <Link to="/home">
-            <p className="rounded-l bg-yellow-400 text-blue-800 px-1 py-2 w-24 md:w-30 border-2 border-blue-800 hover:bg-yellow-500 transition">
+            <p className="rounded-l bg-yellow-400 text-blue-800 px-1 py-2 w-24 md:w-30 border-2 border-blue-800 hover:bg-yellow-500  transition">
               HOME
             </p>
           </Link>
@@ -27,13 +27,13 @@ const Home = () => {
               PRICING
             </p>
           </Link>
-          <Link to="">
+          <Link to="/photos">
             <p className="rounded-r bg-yellow-400 text-blue-800 px-1 py-2 w-24 md:w-30 border-2 border-blue-800 hover:bg-yellow-500 transition">
               PHOTOS
             </p>
           </Link>
         </div>
-        <div className="flex flex-col gap-5 mt-10 p-8 border-2 border-blue-800 bg-purple-300 text-blue-800 font-black rounded w-[90%] mx-auto md:mx-0 ">
+        <div className="flex flex-col gap-5 mt-10 p-8 border-2 border-blue-800 bg-purple-300 text-blue-800 font-black rounded w-[90%] mx-auto md:mx-0 texture shadow-md">
           {/* <div className="flex justify-between">
             <p>DAILY ENTRY: $15</p>
             <p>SATURDAY: $20</p>
@@ -44,19 +44,22 @@ const Home = () => {
             <p>SATURDAY: 1PM - 12AM (MIDNIGHT)</p>
             <p>SUNDAY: 1PM - 6PM</p>
           </div>
-          <Link to="/pricing" className="w-[50%] bg-yellow-400 px-1 py-2 text-center border-2 border-blue-800 hover:bg-yellow-500 transition mx-auto">
+          <Link
+            to="/pricing"
+            className="w-[50%] bg-yellow-400 px-1 py-2 text-center border-2 border-blue-800 hover:bg-yellow-500 hover:scale-110 transition mx-auto"
+          >
             MORE INFO
           </Link>
         </div>
 
         <div className="relative top-65 md:top-10 flex w-[90%] justify-between md:justify-evenly items-center mx-auto md:mx-0">
           <Link to="/games">
-            <p className="rounded w-40 bg-yellow-400 text-blue-800 border-2 border-blue-800 px-1 py-2 md:w-45 text-center font-bold text-xl hover:bg-yellow-500 transition ">
+            <p className="rounded w-40 bg-yellow-400 text-blue-800 border-2 border-blue-800 px-1 py-2 md:w-45 text-center font-bold text-xl hover:bg-yellow-500 hover:scale-110 transition ">
               PLAY NOW
             </p>
           </Link>
           <Link to="/pricing">
-            <p className="rounded w-40 bg-yellow-400 text-blue-800 border-2 border-blue-800 px-1 py-2 md:w-45 text-center font-bold text-xl hover:bg-yellow-500 transition">
+            <p className="rounded w-40 bg-yellow-400 text-blue-800 border-2 border-blue-800 px-1 py-2 md:w-45 text-center font-bold text-xl hover:bg-yellow-500 hover:scale-110 transition">
               LEARN MORE
             </p>
           </Link>

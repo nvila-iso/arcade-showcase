@@ -6,7 +6,8 @@
 }
 
 body {
-  background-color: #099cc2;
+  /* background-color: #099cc2; */
+  background-image: url("/src/assets/background.jpg");
 }
 
 .title {
@@ -15,6 +16,14 @@ body {
 }
 
 .price-stroke {
-  -webkit-text-stroke: 2px #0A0A5F; /* Stroke width and color */
+  -webkit-text-stroke: 2px #0a0a5f; /* Stroke width and color */
   text-stroke: 2px black; /* Fallback for future compatibility */
+}
+
+.texture {
+  background-image: 
+    url("/src/assets/beige-paper.png");
+  background-blend-mode: multiply; /* or overlay, soft-light, etc. */
+  /* background-size: cover; */
+  background-position: center;
 }

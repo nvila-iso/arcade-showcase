@@ -76,14 +76,14 @@ const Games = () => {
         <p className="relative bottom-5 text-5xl text-[#E4494F] font-bold text-shadow-[3px_3px_0px_rgb(4_45_77_/_1)] bg-yellow-400 rounded-2xl border-2 border-black/80 py-2 px-3 shadow-[0_5px_0px_rgba(0,0,0,.5)]">
           GAMES
         </p>
-        <Link to="">
+        <Link to="/events">
           <p className="text-white font-bold text-2xl hover:text-[#E4494F] transition">
             EVENTS
           </p>
         </Link>
       </div>
 
-      <div className="w-full bg-[#FDB827] border-l-2 border-r-2 border-b-2 rounded-b-lg  max-w-4xl pt-5 px-3 flex flex-col flex-1 min-h-0">
+      <div className="w-full bg-[#FDB827] border-l-2 border-r-2 border-b-2 rounded-b-lg  max-w-4xl pt-5 px-3 flex flex-col flex-1 min-h-0 texture">
         <input
           type="text"
           onChange={(e) => {
@@ -122,7 +122,7 @@ const Games = () => {
           </select>
         </div>
 
-        <div className="mt-5 py-5 grid grid-cols-1 gap-5 flex-1 overflow-y-auto min-h-0">
+        <div className="mt-5 py-5 grid grid-cols-1 md:grid-cols-2 gap-5 flex-1 overflow-y-auto min-h-0">
           {currentGames.map((game, i) => (
             <div
               key={i}

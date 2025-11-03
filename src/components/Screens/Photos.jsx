@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css"; // <-- required
+import "yet-another-react-lightbox/styles.css";
 import ScreenLayout from "../../layouts/ScreenLayout";
-import photoGallery from "../../data/photoGallery"; // [{ src, alt, thumb?, width?, height? }, ...]
+import photoGallery from "../../data/photoGallery"; 
 
 const Photos = () => {
   const [index, setIndex] = useState(-1);
