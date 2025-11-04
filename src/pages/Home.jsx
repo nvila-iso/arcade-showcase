@@ -4,7 +4,7 @@ import character from "../assets/character-home.png";
 
 const Home = () => {
   return (
-    <div className="max-w-6xl flex flex-col md:flex-row overflow-hidden flex h-screen">
+    <div className="max-w-6xl flex flex-col md:flex-row overflow-hidden flex h-screen px-2">
       <div className="md:relative md:top-50 md:left-10">
         <Link to="">
           <p className="font-lilita text-6xl text-center md:text-left text-[#E4494F] mb-5 text-shadow-[-3px_3px_0px_rgb(0_0_0_/_1)] mt-5 title">
@@ -34,10 +34,6 @@ const Home = () => {
           </Link>
         </div>
         <div className="flex flex-col gap-5 mt-10 p-8 border-2 border-blue-800 bg-purple-300 text-blue-800 font-black rounded w-[90%] mx-auto md:mx-0 texture shadow-md">
-          {/* <div className="flex justify-between">
-            <p>DAILY ENTRY: $15</p>
-            <p>SATURDAY: $20</p>
-          </div> */}
           <div className="text-center">
             <p className="text-2xl">OPERATING HOURS</p>
             <p>THURS & FRI: 3PM - 12AM (MIDNIGHT)</p>

@@ -4,7 +4,7 @@ const ArcadeHome = () => {
   return (
     <>
       <div className="">
-      <OpeningScreen />
+        <OpeningScreen />
       </div>
     </>
   );

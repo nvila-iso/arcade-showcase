@@ -22,9 +22,14 @@ body {
   text-stroke: 2px black; /* Fallback for future compatibility */
 }
 
-.texture {
-  background-image: url("/src/assets/beige-paper.png");
-  background-blend-mode: multiply; /* or overlay, soft-light, etc. */
-  /* background-size: cover; */
-  background-position: center;
+/* swaps mask for an overlay layer */
+.texture-surface { position: relative; }
+.texture-surface::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  -webkit-mask-image: url("/src/assets/bedge-grunge.png");
+  mask-image: url("/src/assets/bedge-grunge.png");
+  background: rgba(0,0,0,0.08); /* subtle grime tint through the mask */
 }
+
