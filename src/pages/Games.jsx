@@ -1,13 +1,28 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router";
-import arcadeGames from "../data/arcade_games";
-import pinballGames from "../data/pinball_games";
 
 const Games = () => {
+  const [allGames, setAllGames] = useState([]);
+  const [loading, setLoading] = useState([]);
   const [gameSearch, setGameSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedPlatform, setSelectedPlatform] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/api/games");
+        const data = await response.json();
+        setAllGames(data);
+      } catch (error) {
+        console.error("Error fetching games:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchGames();
+  }, []);
 
   const platforms = ["Arcade", "Pinball"];
   const genres = [
@@ -21,8 +36,6 @@ const Games = () => {
     "Other",
   ];
 
-  const allGames = [...arcadeGames, ...pinballGames];
-
   const normalize = (str) => {
     return str.toLowerCase().trim();
   };
@@ -30,13 +43,13 @@ const Games = () => {
   const baseList = useMemo(() => {
     switch (selectedPlatform) {
       case "Arcade":
-        return arcadeGames;
+        return allGames.filter((g) => g.platform === "Arcade");
       case "Pinball":
-        return pinballGames;
+        return allGames.filter((g) => g.platform === "Pinball");
       default:
         return allGames;
     }
-  }, [selectedPlatform]);
+  }, [selectedPlatform, allGames]);
 
   const searchList =
     gameSearch.length > 0
@@ -67,7 +80,7 @@ const Games = () => {
   return (
     <div className="h-screen w-full flex flex-col items-center px-5 py-10 overflow-hidden">
       <div className="bg-black/20 border-2 border-black rounded-t-lg w-full max-w-4xl flex justify-center items-center gap-5 flex-shrink-0">
-        <Link to="/home">
+        <Link to="/">
           <p className="text-white font-bold md:text-2xl hover:text-[#E4494F] transition">
             HOME
           </p>
@@ -138,7 +151,7 @@ const Games = () => {
             </div>
           ))}
         </div>
-        
+
         {/* PAGINATION */}
         <div className="flex justify-center gap-2 mt-5 flex-shrink-0">
           <button

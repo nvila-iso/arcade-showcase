@@ -6,7 +6,7 @@ const Pricing = () => {
     <>
       <div className="h-screen min-h-0 w-full flex flex-col justify-center items-center px-5 py-10">
         <div className="bg-black/20 border-2 border-black rounded-t-lg w-full max-w-4xl flex justify-center items-center gap-5 flex-shrink-0 px-5 h-20">
-          <Link to="/home">
+          <Link to="/">
             <p className="text-white font-bold md:text-2xl hover:text-[#E4494F] transition">
               HOME
             </p>
