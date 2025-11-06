@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
@@ -23,4 +23,12 @@ model ArcadiaGame {
   alt      String
   url      String
   status   Boolean
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  role      String
+  password  String
+  createdAt DateTime @default(now())
 }
