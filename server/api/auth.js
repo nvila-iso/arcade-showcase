@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import pkg from "../generated/prisma/index.js";
+import jwt from "jsonwebtoken";
 
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
@@ -32,9 +33,16 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid username or password." });
     }
 
+    const token = jwt.sign(
+      { id: user.id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
     // everything works out
     res.json({
       message: "Login Successful!",
+      token,
       user: { id: user.id, role: user.role },
     });
   } catch (error) {
