@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "./layouts/RootLayout.jsx";
 
-
 // Public Pages
 import Home from "./pages/Home.jsx";
 import Games from "./pages/Games.jsx";
@@ -11,6 +10,7 @@ import Events from "./pages/Events.jsx";
 
 // Admin Pages
 import Login from "./pages/auth/Login.jsx";
+import AdminPanel from "./pages/admin/AdminPanel.jsx";
 
 const routes = [
   {
@@ -23,6 +23,7 @@ const routes = [
       { path: "photos", Component: Photos },
       { path: "events", Component: Events },
       { path: "login", Component: Login },
+      { path: "admin-panel", Component: AdminPanel },
     ],
   },
 ];

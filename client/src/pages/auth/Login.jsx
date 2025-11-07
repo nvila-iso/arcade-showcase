@@ -1,22 +1,28 @@
+import { useAuth } from "../../context/AuthContext.jsx";
+import { Link, useNavigate } from "react-router";
+import { useState } from "react";
 import logo from "../../assets/lostark-logo.png";
 
-const handleLogin = async (FormData) => {
+const Login = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  const [error, setError] = useState(null);
+
+  const handleLogin = async (FormData) => {
     const username = FormData.get("username");
     const password = FormData.get("password");
     const credentials = {
-        username,
-        password,
-    }
+      username,
+      password,
+    };
 
     try {
-        await
+      await login(credentials);
+      navigate("/admin-panel");
     } catch (error) {
-        
+      setError(error.message);
     }
-
-}
-
-const Login = () => {
+  };
   return (
     <>
       <div className="h-screen w-full flex flex-col justify-center items-center px-5 py-10 overflow-hidden">
@@ -24,21 +30,26 @@ const Login = () => {
           <img src={logo} alt="Lost Ark X Logo" />
           <div className="flex flex-col gap-1">
             <p className="font-semibold text-center">Admin Login</p>
-            <form action="" className="flex flex-col gap-3">
+            <form action={handleLogin} className="flex flex-col gap-3">
               <input
-                value="username"
+                required
+                name="username"
                 type="text"
                 className="border-3 border-purple-500 rounded px-3 py-1 bg-purple-200 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
                 placeholder="username"
               />
               <input
-                value="password"
+                required
+                name="password"
                 type="text"
                 className="border-3 border-purple-500 rounded px-3 py-1 bg-purple-200 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
                 placeholder="password"
               />
-              <button className="bg-emerald-500 py-1 text-white/80 font-semibold shadow-[0px_2px_0px_rgb(173_70_255_/_1)] hover:shadow-[0px_3px_10px_rgb(173_70_255_/_1)] transition">LOGIN</button>
+              <button className="bg-emerald-500 py-1 text-white/80 font-semibold shadow-[0px_2px_0px_rgb(173_70_255_/_1)] hover:shadow-[0px_3px_10px_rgb(173_70_255_/_1)] transition">
+                LOGIN
+              </button>
             </form>
+            {error && <output>{error}</output>}
             <p className="text-center underline italic">reset password</p>
           </div>
         </div>
