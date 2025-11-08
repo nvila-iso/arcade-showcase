@@ -16,7 +16,7 @@ const Photos = () => {
     <>
       <div className="h-screen w-full flex flex-col items-center px-5 py-10 overflow-hidden">
         <div className="bg-black/20 border-2 border-black rounded-t-lg w-full max-w-4xl flex justify-center items-center gap-5 flex-shrink-0">
-          <Link to="/home">
+          <Link to="/">
             <p className="text-white font-bold md:text-2xl hover:text-[#E4494F] transition">
               HOME
             </p>
