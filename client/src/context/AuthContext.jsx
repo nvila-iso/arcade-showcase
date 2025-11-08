@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 const AuthContext = createContext();
 
@@ -8,10 +9,28 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState();
+  const [user, setUser] = useState(null);
 
-  const saveToken = (token) => {
-    setToken(token);
-    sessionStorage.setItem("token", token);
+  const saveToken = (newToken) => {
+    setToken(newToken);
+    sessionStorage.setItem("token", newToken);
+
+    try {
+      const decoded = jwtDecode(newToken);
+      setUser(decoded);
+
+      // auto logout
+      const now = Date.now() / 1000;
+      const timeout = (decoded.exp - now) * 1000;
+      if (timeout > 0) {
+        setTimeout(() => logout(), timeout);
+      } else {
+        logout();
+      }
+    } catch (error) {
+      console.error("Failed to decode token:", error);
+      logout();
+    }
   };
 
   const login = async (credentials) => {
@@ -39,6 +58,7 @@ export const AuthProvider = ({ children }) => {
     try {
       sessionStorage.removeItem("token");
       setToken(null);
+      setUser(null);
     } catch (error) {
       console.error(error);
     }
@@ -52,7 +72,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const value = { token, login, logout };
+  const value = { token, login, user, logout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

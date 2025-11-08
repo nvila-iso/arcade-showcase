@@ -7,16 +7,15 @@ const AdminPanel = () => {
   const [allGames, setAllGames] = useState([]);
   const [loading, setLoading] = useState([]);
   const navigate = useNavigate();
-  const { logout } = useAuth();
+  const { token, user, logout } = useAuth();
   const [error, setError] = useState(null);
 
   // Check if user is authorized
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
     if (!token) {
       navigate("/login");
     }
-  }, [navigate]);
+  }, [token, navigate]);
 
   // load up all the games!
   useEffect(() => {
@@ -38,7 +37,7 @@ const AdminPanel = () => {
     <>
       <div className="h-screen w-full flex flex-col items-center px-5 py-10 overflow-hidden">
         <div>
-          <button className="" onClick={logout}>
+          <button className="bg-red-200 px-2 py-1" onClick={logout}>
             logout
           </button>
         </div>
