@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext.jsx";
 import catGundam from "../../assets/cat-lost-ark-gunplay-400x290.png";
+import listView from "../../assets/list-view.svg";
+import gridView from "../../assets/grid-view.svg";
+import ListView from "../../components/Admin/ListView.jsx";
+import GridView from "../../components/Admin/GridView.jsx";
 
 const AdminPanel = () => {
   const [allGames, setAllGames] = useState([]);
@@ -9,6 +13,9 @@ const AdminPanel = () => {
   const navigate = useNavigate();
   const { token, user, logout } = useAuth();
   const [error, setError] = useState(null);
+
+  const [itemsDisplay, setItemsDisplay] = useState("grid");
+
 
   // Check if user is authorized
   useEffect(() => {
@@ -41,61 +48,37 @@ const AdminPanel = () => {
             logout
           </button>
         </div>
-        <div className="flex flex-col gap-3 border-3 border-white w-5xl h-full rounded bg-white/40 backdrop-blur-sm px-2 py-1">
-          <header className="flex w-full gap-5 justify-center"></header>
-          <div>
-            <input type="text" className="" />
+        <div className="flex flex-col gap-3 border-3 border-white max-w-5xl h-full rounded bg-white/40 backdrop-blur-sm px-2 py-1">
+          <div className="flex items-center">
+            <input
+              type="text"
+              className="w-40 bg-white/30 border border-white rounded-full px-2 py-1"
+              placeholder="Search..."
+            />
+            <button>
+              <img
+                src={listView}
+                alt=""
+                className="h-8"
+                onClick={() => setItemsDisplay("list")}
+              />
+            </button>
+
+            <img
+              src={gridView}
+              alt=""
+              className="h-8"
+              onClick={() => setItemsDisplay("grid")}
+            />
           </div>
 
           {/* GAMES TABLE */}
-
           <div className="overflow-auto bg-white">
-            <table className="table-fixed text-center">
-              <thead className="bg-yellow-200 text-gray-700 h-10 font-semibold tracking-wider">
-                <tr className="">
-                  <th>id</th>
-                  <th>image</th>
-                  <th>name</th>
-                  <th>platform</th>
-                  <th>genre</th>
-                  <th>active</th>
-                  <th>edit</th>
-                  <th>delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {allGames.map((g) => (
-                  <>
-                    <tr className="odd:bg-zinc-200 even:bg-zinc-400 hover:bg-yellow-100 h-24 ">
-                      <td>{g.id}</td>
-                      <td className="w-[25%]">
-                        <img
-                          src={g.img}
-                          alt={g.alt}
-                          className="h-20 object-cover rounded-md"
-                        />
-                      </td>
-                      <td className="w-[25%]">{g.name}</td>
-                      <td>{g.platform}</td>
-                      <td>{g.genre}</td>
-                      <td>
-                        {g.status === true ? (
-                          <>
-                            <input type="checkbox" name="" id="" checked />
-                          </>
-                        ) : (
-                          <>
-                            <input type="checkbox" name="" id="" />
-                          </>
-                        )}
-                      </td>
-                      <td className="text-lg">✏️</td>
-                      <td className="text-lg">☠️</td>
-                    </tr>
-                  </>
-                ))}
-              </tbody>
-            </table>
+            {itemsDisplay === "list" ? (
+              <ListView allGames={allGames} />
+            ) : (
+              <GridView allGames={allGames} />
+            )}
           </div>
         </div>
       </div>
