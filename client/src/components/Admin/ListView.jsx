@@ -1,32 +1,26 @@
-const ListView = ({ allGames }) => {
+const ListView = ({ allGames, setOpenEdit, setSelectedGame }) => {
   return (
     <>
-      <table className="table-fixed text-center">
-        <thead className="bg-yellow-200 text-gray-700 h-10 font-semibold tracking-wider">
-          <tr className="">
+      <table className="w-full table-fixed text-center">
+        <thead className="bg-emerald-300 h-10 font-semibold text-sm tracking-wider ">
+          <tr>
             <th>id</th>
-            <th>image</th>
             <th>name</th>
             <th>platform</th>
             <th>genre</th>
             <th>active</th>
             <th>edit</th>
-            <th>delete</th>
           </tr>
         </thead>
         <tbody>
           {allGames.map((g) => (
             <>
-              <tr className="odd:bg-zinc-200 even:bg-zinc-400 hover:bg-yellow-100 h-24 ">
-                <td>{g.id}</td>
-                <td className="w-[25%]">
-                  <img
-                    src={g.img}
-                    alt={g.alt}
-                    className="h-20 object-cover rounded-md"
-                  />
-                </td>
-                <td className="w-[25%]">{g.name}</td>
+              <tr
+                className="odd:bg-purple-200 even:bg-purple-400 hover:bg-red-300 h-20 text-sm"
+                key={g.id}
+              >
+                <td className="">{g.id}</td>
+                <td className="w-[35%]">{g.name}</td>
                 <td>{g.platform}</td>
                 <td>{g.genre}</td>
                 <td>
@@ -40,8 +34,15 @@ const ListView = ({ allGames }) => {
                     </>
                   )}
                 </td>
-                <td className="text-lg">✏️</td>
-                <td className="text-lg">☠️</td>
+                <td
+                  className="text-lg"
+                  onClick={() => {
+                    setSelectedGame(g);
+                    setOpenEdit(true);
+                  }}
+                >
+                  ✏️
+                </td>
               </tr>
             </>
           ))}
