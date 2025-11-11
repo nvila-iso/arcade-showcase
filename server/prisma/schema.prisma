@@ -15,14 +15,15 @@ datasource db {
 }
 
 model ArcadiaGame {
-  id       Int     @id @default(autoincrement())
-  name     String
-  genre    String
-  platform String
-  img      String
-  alt      String
-  url      String
-  status   Boolean
+  id        Int      @id @default(autoincrement())
+  name      String
+  genre     String
+  platform  String
+  img       String
+  alt       String
+  url       String
+  status    Boolean
+  createdAt DateTime @default(now())
 }
 
 model User {

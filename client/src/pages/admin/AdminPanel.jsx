@@ -7,6 +7,7 @@ import ListView from "../../components/Admin/ListView.jsx";
 import GridView from "../../components/Admin/GridView.jsx";
 import Search from "../../components/Admin/Search.jsx";
 import EditGame from "../../components/Admin/EditGame.jsx";
+import AddGame from "../../components/Admin/AddGame.jsx";
 
 const AdminPanel = () => {
   const [allGames, setAllGames] = useState([]);
@@ -30,18 +31,34 @@ const AdminPanel = () => {
   }, [token, navigate]);
 
   // load up all the games!
+  // useEffect(() => {
+  //   const fetchGames = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:4000/api/games");
+  //       const data = await response.json();
+  //       setAllGames(data);
+  //     } catch (error) {
+  //       console.error("Error fetching games:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchGames();
+  // }, []);
+
+  const fetchGames = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/games");
+      const data = await response.json();
+      setAllGames(data);
+    } catch (error) {
+      console.error("Error fetching games:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const response = await fetch("http://localhost:4000/api/games");
-        const data = await response.json();
-        setAllGames(data);
-      } catch (error) {
-        console.error("Error fetching games:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchGames();
   }, []);
 
@@ -105,12 +122,25 @@ const AdminPanel = () => {
                 setSelectedGame={setSelectedGame}
               />
             ) : (
-              <GridView allGames={filteredGames} />
+              <GridView
+                allGames={filteredGames}
+                setOpenEdit={setOpenEdit}
+                setSelectedGame={setSelectedGame}
+              />
             )}
           </div>
         </div>
       </div>
-      {openEdit && <EditGame setOpenEdit={setOpenEdit} game={selectedGame} />}
+      {openEdit && (
+        <EditGame
+          setOpenEdit={setOpenEdit}
+          game={selectedGame}
+          fetchGames={fetchGames}
+        />
+      )}
+      {newGameModal && (
+        <AddGame setNewGameModal={setNewGameModal} fetchGames={fetchGames} />
+      )}
     </>
   );
 };

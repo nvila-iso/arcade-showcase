@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import trash from "../../assets/trash-can.svg";
 
-const EditGame = ({ setOpenEdit, game }) => {
+const EditGame = ({ setOpenEdit, game, fetchGames }) => {
   const [image, setImage] = useState(null);
   const [imageModal, setImageModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+
+  const { token } = useAuth();
 
   const genres = [
     "Fighting",
@@ -14,6 +17,7 @@ const EditGame = ({ setOpenEdit, game }) => {
     "Beat-Em-Ups",
     "Puzzle",
     "Platformer",
+    "EXA-Arcadia STGs",
     "Other",
   ];
 
@@ -46,6 +50,26 @@ const EditGame = ({ setOpenEdit, game }) => {
         ))}
       </>
     );
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:4000/api/games/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) throw new Error("Failed to delete game");
+      console.log("Game Deleted:", id);
+
+      setDeleteModal(false);
+      setOpenEdit(false);
+      fetchGames();
+    } catch (error) {
+      console.error("Error deleted:", error.message);
+    }
   };
 
   return (
@@ -136,9 +160,15 @@ const EditGame = ({ setOpenEdit, game }) => {
               <p className="font-bold">{game.name}</p>
 
               <div className="flex justify-center gap-5">
-                <button className="bg-emerald-300 w-20 py-1">YES</button>
+                <button
+                  className="bg-emerald-300 w-20 py-1"
+                  onClick={() => handleDelete(game.id)}
+                >
+                  YES
+                </button>
                 <button
                   className="bg-red-300 w-20 py-1"
+                  type="button"
                   onClick={() => setDeleteModal(false)}
                 >
                   NO
