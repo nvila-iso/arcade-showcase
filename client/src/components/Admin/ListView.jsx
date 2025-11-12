@@ -1,4 +1,6 @@
-const ListView = ({ allGames, setOpenEdit, setSelectedGame }) => {
+import { SiApplearcade } from "react-icons/si";
+
+const ListView = ({ allGames, setModal, setSelectedGame }) => {
   return (
     <>
       <table className="w-full table-fixed text-center">
@@ -16,17 +18,17 @@ const ListView = ({ allGames, setOpenEdit, setSelectedGame }) => {
           {allGames.map((g) => (
             <>
               <tr
-                className="odd:bg-purple-200 even:bg-purple-400 hover:bg-red-300 h-20 text-sm"
+                className="odd:bg-purple-200 even:bg-purple-400 hover:bg-emerald-200 h-20 text-sm"
                 key={g.id}
               >
                 <td className="">{g.id}</td>
-                <td className="w-[35%]">{g.name}</td>
+                <td className="">{g.name}</td>
                 <td>{g.platform}</td>
                 <td>{g.genre}</td>
                 <td>
                   {g.status === true ? (
                     <>
-                      <input type="checkbox" name="" id="" checked />
+                      <input type="checkbox" name="" id="" checked readOnly />
                     </>
                   ) : (
                     <>
@@ -38,7 +40,7 @@ const ListView = ({ allGames, setOpenEdit, setSelectedGame }) => {
                   className="text-lg"
                   onClick={() => {
                     setSelectedGame(g);
-                    setOpenEdit(true);
+                    setModal("edit");
                   }}
                 >
                   ✏️

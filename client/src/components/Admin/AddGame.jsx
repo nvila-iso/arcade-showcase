@@ -1,19 +1,7 @@
 import { useAuth } from "../../context/AuthContext";
 
-const AddGame = ({ setNewGameModal, fetchGames }) => {
+const AddGame = ({ setNewGameModal, fetchGames, genres, setModal }) => {
   const { token } = useAuth();
-
-  const genres = [
-    "Fighting",
-    "Rhythm",
-    "Light Gun",
-    "STG (Shmups)",
-    "Beat-Em-Ups",
-    "Puzzle",
-    "Platformer",
-    "EXA-Arcadia STGs",
-    "Other",
-  ];
 
   const handleNewGamePost = async (e) => {
     e.preventDefault();
@@ -53,53 +41,58 @@ const AddGame = ({ setNewGameModal, fetchGames }) => {
 
   return (
     <>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-200 rounded p-1 w-[300px] shadow-lg border-3 border-red-300">
-        <div className="flex w-full justify-end">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-200 rounded w-[300px] border-3 border-purple-800 shadow-[5px_4px_0px_rgb(0_0_0_/_1)]">
+        <div className="flex h-10 w-full justify-between bg-purple-500 items-center px-3 text-white">
+          <p className="font-semibold">ADD NEW GAME</p>
           <button
-            className="bg-red-400 px-2 hover:bg-red-600 transition"
-            onClick={() => setNewGameModal(false)}
+            className="w-6 h-6 shadow-[4px_3px_0px_rgb(0_0_0_/_1)] hover:shadow-none bg-red-400 hover:bg-red-500 transition"
+            onClick={() => setModal("")}
           >
             X
           </button>
         </div>
 
-        <div className="mt-2">
-          <form onSubmit={handleNewGamePost} className="flex flex-col gap-2">
+        <div className="mt-3 mb-3 px-3 py-2">
+          <form onSubmit={handleNewGamePost} className="flex flex-col gap-3">
             <input
               type="text"
               name="name"
               placeholder="Game Name"
-              className="border w-full rounded px-2 py-1"
+              className="border-2 w-full rounded px-2 py-1 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
               required
             />
             <input
               type="text"
               name="img"
-              className="border w-full rounded px-2 py-1"
+              placeholder="Image URL (manual)"
+              className="border-2 w-full rounded px-2 py-1 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
               required
             />
             <input
               type="text"
               name="alt"
               placeholder="Image Alt (desc)"
-              className="border w-full rounded px-2 py-1"
+              className="border-2 w-full rounded px-2 py-1 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
             />
             <input
               type="url"
               name="url"
-              className="border w-full rounded px-2 py-1"
+              className="border-2 w-full rounded px-2 py-1 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
               placeholder="Youtube URL"
             />
             <select
               name="platform"
-              className="border w-full rounded px-2 py-1"
+              className="border-2 w-full rounded px-2 py-1 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
               required
             >
               <option value="">--Select Platform</option>
               <option value="Arcade">Arcade</option>
               <option value="Pinball">Pinball</option>
             </select>
-            <select name="genre" className="border w-full rounded px-2 py-1">
+            <select
+              name="genre"
+              className="border-2 w-full rounded px-2 py-1 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
+            >
               <option value="">--Select Genre</option>
               {genres.map((g) => (
                 <option value={g} key={g}>
@@ -107,13 +100,13 @@ const AddGame = ({ setNewGameModal, fetchGames }) => {
                 </option>
               ))}
             </select>
-            <div className="flex gap-1 items-center border-1 rounded px-2 py-1">
+            <div className="flex gap-1 items-center border-2 rounded px-2 py-1 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]">
               <p>Active: </p>
               <input type="checkbox" name="status" />
             </div>
             <button
               type="submit"
-              className="bg-emerald-300 w-30 self-center py-1 rounded"
+              className="w-30 mx-auto border-2 border-transparent bg-emerald-500 py-1 text-white font-semibold shadow-emerald-600 shadow-xs hover:bg-emerald-400 hover:shadow-lg hover:shadow-emerald-400 hover:border-2 hover:border-emerald-500 transition"
             >
               Submit
             </button>
