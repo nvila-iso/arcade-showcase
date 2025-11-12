@@ -53,7 +53,31 @@ router.post("/", verifyToken, async (req, res) => {
 
 // GET game by ID --> /api/games/:id
 
-// UPDATE game
+// PATCH (update) game --> /api/games/:id
+router.patch("/:id", verifyToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, genre, platform, img, alt, url, status } = req.body;
+
+    const updatedGame = await prisma.arcadiaGame.update({
+      where: { id: parseInt(id) },
+      data: {
+        name,
+        genre: genre || "Other",
+        platform,
+        img,
+        alt: alt || name,
+        url: url || "",
+        status: status ?? true,
+      },
+    });
+
+    res.status(200).json(updatedGame);
+  } catch (error) {
+    console.error("Error updating game:", error);
+    res.status(500).json({ error: "Failed to update game." });
+  }
+});
 
 // DELETE --> /api/games/:id
 router.delete("/:id", verifyToken, async (req, res) => {
