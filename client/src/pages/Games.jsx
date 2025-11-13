@@ -9,18 +9,19 @@ const Games = () => {
   const [selectedPlatform, setSelectedPlatform] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
+  const fetchGames = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/games");
+      const data = await response.json();
+      setAllGames(data);
+    } catch (error) {
+      console.error("Error fetching games:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const response = await fetch("http://localhost:4000/api/games");
-        const data = await response.json();
-        setAllGames(data);
-      } catch (error) {
-        console.error("Error fetching games:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchGames();
   }, []);
 
@@ -135,7 +136,7 @@ const Games = () => {
         </div>
 
         <div className="mt-5 py-5 grid grid-cols-1 md:grid-cols-2 gap-5 flex-1 overflow-y-auto min-h-0">
-          {currentGames.map((game, i) => (
+          {currentGames.filter((g) => g.status !== false).map((game, i) => (
             <div
               key={i}
               className="w-[90%] h-35 md:h-50 mx-auto flex flex-col justify-center bg-black/30 items-center text-center border-3 border-black rounded-lg hover:scale-105 hover:shadow-[0_3px_5px_rgba(152,178,175,.65)] transition"

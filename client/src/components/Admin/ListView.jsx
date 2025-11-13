@@ -1,6 +1,6 @@
 import { SiApplearcade } from "react-icons/si";
 
-const ListView = ({ allGames, setModal, setSelectedGame }) => {
+const ListView = ({ allGames, setModal, setSelectedGame, toggleStatus }) => {
   return (
     <>
       <table className="w-full table-fixed text-center">
@@ -26,18 +26,15 @@ const ListView = ({ allGames, setModal, setSelectedGame }) => {
                 <td>{g.platform}</td>
                 <td>{g.genre}</td>
                 <td>
-                  {g.status === true ? (
-                    <>
-                      <input type="checkbox" name="" id="" checked readOnly />
-                    </>
-                  ) : (
-                    <>
-                      <input type="checkbox" name="" id="" />
-                    </>
-                  )}
+                  <input
+                    type="checkbox"
+                    checked={g.status}
+                    onChange={(e) => toggleStatus(g.id, e.target.checked)}
+                    className="cursor-pointer"
+                  />
                 </td>
                 <td
-                  className="text-lg"
+                  className="text-lg cursor-pointer"
                   onClick={() => {
                     setSelectedGame(g);
                     setModal("edit");

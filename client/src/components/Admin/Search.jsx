@@ -5,12 +5,14 @@ const Search = ({ onSearch }) => {
 
   return (
     <>
-      <input
-        type="text"
-        onChange={handleChange}
-        className="border-2 border-purple-500 bg-purple-200 rounded-full px-2 py-1 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]"
-        placeholder="Search..."
-      />
+      <div className="flex row-1">
+        <input
+          type="text"
+          onChange={handleChange}
+          className="w-full bg-emerald-200 px-4 py-1 shadow-[0px_6px_0px_rgb(0_212_146_/_1)] hover:shadow-[0px_3px_0px_rgb(0_212_146_/_1)] hover:bg-white focus:bg-white focus:shadow-[0px_0px_0px_rgb(0_212_146_/_1)] transition rounded-full"
+          placeholder="Search..."
+        />
+      </div>
     </>
   );
 };

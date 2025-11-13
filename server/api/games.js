@@ -57,19 +57,27 @@ router.post("/", verifyToken, async (req, res) => {
 router.patch("/:id", verifyToken, async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, genre, platform, img, alt, url, status } = req.body;
+
+    const data = {};
+    const allowedFields = [
+      "name",
+      "genre",
+      "platform",
+      "img",
+      "alt",
+      "url",
+      "status",
+    ];
+
+    for (let field of allowedFields) {
+      if (req.body[field] !== undefined) {
+        data[field] = req.body[field];
+      }
+    }
 
     const updatedGame = await prisma.arcadiaGame.update({
-      where: { id: parseInt(id) },
-      data: {
-        name,
-        genre: genre || "Other",
-        platform,
-        img,
-        alt: alt || name,
-        url: url || "",
-        status: status ?? true,
-      },
+      where: { id: Number(id) },
+      data,
     });
 
     res.status(200).json(updatedGame);
