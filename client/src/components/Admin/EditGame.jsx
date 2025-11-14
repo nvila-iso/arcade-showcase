@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { FaTrashAlt } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import { FaEdit } from "react-icons/fa";
 
 const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
   const [image, setImage] = useState(null);
@@ -108,17 +110,24 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
 
   return (
     <>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-200 rounded w-[350px] border-3 border-purple-800 shadow-[5px_4px_0px_rgb(0_0_0_/_1)] ">
-        <div className="flex h-10 w-full justify-between bg-purple-500 items-center px-3 text-white">
-          <button onClick={() => setDeleteModal(true)}>
-            <FaTrashAlt className="hover:text-red-500 transition" />
-          </button>
-          <p className="font-semibold">Edit</p>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-200 rounded w-[350px] shadow-[5px_4px_0px_rgb(0_0_0_/_1)] ">
+        <div className="flex rounded-t h-10 w-full justify-between bg-purple-500 items-center px-3 text-white">
           <button
-            className="w-6 h-6 shadow-[4px_3px_0px_rgb(0_0_0_/_1)] hover:shadow-none bg-red-400 hover:bg-red-500 transition"
+            onClick={() => setDeleteModal(true)}
+            className="flex text-sm justify-center items-center rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 w-6 h-6 font-bold active:bg-yellow-300 shadow-[0px_3px_0px_rgb(0_0_0_/_1)] hover:shadow-[0px_0px_0px_rgb(252_200_0_/_1)] transition"
+          >
+            <FaTrashAlt className="" />
+          </button>
+          <div className="flex items-center gap-1">
+            <FaEdit />
+            <p className="font-semibold">EDIT</p>
+          </div>
+
+          <button
+            className="w-6 h-6 shadow-[0px_3px_0px_rgb(0_0_0_/_1)] hover:shadow-none bg-red-400 hover:bg-red-500 rounded transition flex justify-center items-center"
             onClick={() => setModal("")}
           >
-            X
+            <IoClose />
           </button>
         </div>
 
@@ -127,22 +136,22 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
 
           <div className="flex text-xs">
             <button
-              className={`${
+              className={`h-5 px-2 rounded-l-md ${
                 editDisplay === "basic"
-                  ? "bg-blue-300 text-blue-700 font-semibold border-l-2"
-                  : "bg-sky-400 text-blue-600 hover:text-blue-800 transition"
-              } px-2 py-1`}
+                  ? "bg-yellow-400 shadow-[0px_3px_0px_rgb(239_177_0_/_1)]"
+                  : "bg-yellow-200 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] text-black/50 hover:text-black/50 hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
+              }`}
               type="button"
               onClick={() => setEditDisplay("basic")}
             >
               Basic
             </button>
             <button
-              className={`${
+              className={`h-5 px-2 rounded-r-md ${
                 editDisplay === "advanced"
-                  ? "bg-yellow-300 text-yellow-700 font-semibold border-r-2"
-                  : "bg-yellow-400 text-yellow-600 hover:text-yellow-800 transition"
-              } px-2 py-1`}
+                  ? "bg-yellow-400 shadow-[0px_3px_0px_rgb(239_177_0_/_1)]"
+                  : "bg-yellow-200 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] text-black/50 hover:text-black/50 hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
+              }`}
               type="button"
               onClick={() => setEditDisplay("advanced")}
             >
@@ -160,7 +169,7 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
                 name="name"
                 defaultValue={game.name}
                 type="text"
-                className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+                className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               />
             </label>
 
@@ -168,7 +177,7 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
               <p className="text-xs mb-1">platform</p>
               <select
                 name="platform"
-                className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+                className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               >
                 {selectPlatform()}
               </select>
@@ -178,7 +187,7 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
               <p className="text-xs mb-1">genre</p>
               <select
                 name="genre"
-                className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+                className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               >
                 {selectGenre(game.genre)}
               </select>
@@ -190,7 +199,7 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
                 type="text"
                 name="img"
                 defaultValue={game.img}
-                className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+                className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               />
             </label>
           </div>
@@ -202,7 +211,7 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
           >
             <label htmlFor="">
               <p className="text-xs mb-1">status</p>
-              <div className="flex items-center gap-3 border-2 border-purple-500 px-3 py-2 rounded shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white focus:bg-white transition">
+              <div className="flex items-center bg-purple-100 gap-3 px-3 py-2 rounded-full hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] hover:bg-white focus:bg-white transition">
                 <p>Active: </p>
                 <input
                   type="checkbox"
@@ -223,7 +232,7 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
                 type="text"
                 name="alt"
                 defaultValue={game.alt}
-                className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+                className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               />
             </label>
             <label htmlFor="">
@@ -232,14 +241,14 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
                 type="text"
                 name="url"
                 defaultValue={game.url}
-                className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+                className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               />
             </label>
           </div>
 
           <button
             type="submit"
-            className="w-30 mx-auto bg-emerald-200 px-2 py-1 shadow-[0px_6px_0px_rgb(0_212_146_/_1)] hover:shadow-[0px_0px_0px_rgb(0_212_146_/_1)] hover:bg-emerald-300 transition rounded"
+            className="w-30 mx-auto bg-emerald-200 px-2 py-1 shadow-[0px_6px_0px_rgb(0_212_146_/_1)] hover:shadow-[0px_2px_0px_rgb(0_212_146_/_1)] hover:bg-emerald-300 transition rounded"
           >
             Submit
           </button>
@@ -263,7 +272,7 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
         )}
         {deleteModal && (
           <>
-            <div className="h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-200 rounded p-1 flex flex-col justify-center w-full text-center gap-3">
+            <div className="h-[40%] border-2 border-purple-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-100 rounded p-1 flex flex-col justify-center w-[90%] text-center gap-3 shadow-lg">
               <div>
                 <p>Are you sure you want to delete?</p>
                 <p className="text-sm italic">this is a permanent action</p>
@@ -273,13 +282,13 @@ const EditGame = ({ setModal, game, fetchGames, setSelectedGame }) => {
 
               <div className="flex justify-center gap-3">
                 <button
-                  className="bg-emerald-500 hover:bg-emerald-400 py-1 w-30 font-semibold shadow-[0px_0px_0px_rgb(0_153_102_/_1)] hover:shadow-[0px_6px_0px_rgb(0_153_102_/_1)] transition"
+                  className="w-30 bg-emerald-200 px-2 py-1 shadow-[0px_6px_0px_rgb(0_212_146_/_1)] hover:shadow-[0px_2px_0px_rgb(0_212_146_/_1)] hover:bg-emerald-300 transition rounded"
                   onClick={() => handleDelete(game.id)}
                 >
                   YES
                 </button>
                 <button
-                  className="text-white bg-red-500 hover:bg-red-400 py-1 w-30 font-semibold shadow-[0px_0px_0px_rgb(251_44_54_/_1)] hover:shadow-[0px_6px_0px_rgb(251_44_54_/_1)] transition"
+                  className="w-30 text-white bg-red-400 hover:bg-red-500 py-1 font-semibold hover:shadow-[0px_2px_0px_rgb(251_44_54_/_1)] shadow-[0px_6px_0px_rgb(251_44_54_/_1)] transition rounded"
                   type="button"
                   onClick={() => setDeleteModal(false)}
                 >

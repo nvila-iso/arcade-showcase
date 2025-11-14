@@ -35,9 +35,9 @@ const AdminPanel = () => {
   const [selectedPlatform, setSelectedPlatform] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [modal, setModal] = useState("");
+  const [itemsDisplay, setItemsDisplay] = useState("list");
 
   const navigate = useNavigate();
-  const [itemsDisplay, setItemsDisplay] = useState("list");
 
   // Check if user is authorized
   useEffect(() => {
@@ -134,58 +134,59 @@ const AdminPanel = () => {
   return (
     <>
       <div className="h-screen w-full flex flex-col justify-center items-center px-5 py-10 overflow-hidden">
-        <div className="flex flex-col gap-3 border-3 border-white w-full h-full rounded bg-white/40 backdrop-blur-sm px-2 py-2">
-          <div className="grid grid-rows-3 gap-3">
+        <div className="flex flex-col gap-3 border-3 border-black/40 w-full h-full rounded bg-black/20 backdrop-blur-sm px-2 py-2">
+          <div className="flex items-center justify-between">
+            <p className="text-white font-black text-xl">
+              LOST ARK ARCADIA MANOR
+            </p>
+            <button
+              className="bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 w-20 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_2px_0px_rgb(252_200_0_/_1)] rounded transition cursor-pointer"
+              onClick={logout}
+            >
+              logout
+            </button>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-3 mb-1">
             <Search onSearch={handleSearch} />
-            <Filters
-              genres={genres}
-              handleGenre={handleGenre}
-              handlePlatform={handlePlatform}
-            />
 
-            <div className="w-full flex items-center justify-between">
-              <div className="flex gap-3">
+            <div className="flex gap-3 justify-center items-center">
+              <div>
                 <button
-                  className="rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 w-8 h-8 font-bold active:bg-yellow-300 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
-                  onClick={() => setModal("new")}
+                  className={`h-8 px-2 rounded-l-md ${
+                    itemsDisplay === "list"
+                      ? "bg-purple-400 text-white shadow-[0px_3px_0px_rgb(110_17_176_/_1)]"
+                      : "bg-purple-200 shadow-[0px_6px_0px_rgb(215_178_255_/_1)] text-black/30 hover:text-black/50 hover:shadow-[0px_3px_0px_rgb(215_178_255_/_1)] transition"
+                  }`}
+                  onClick={() => setItemsDisplay("list")}
                 >
-                  +
+                  <FaListOl />
                 </button>
-                <div className="flex">
-                  <button
-                    className={`h-8 px-2 rounded-l-md ${
-                      itemsDisplay === "list"
-                        ? "bg-purple-400 text-white shadow-[0px_6px_0px_rgb(110_17_176_/_1)]"
-                        : "bg-purple-200 shadow-[0px_6px_0px_rgb(215_178_255_/_1)] text-black/30 hover:text-black/50 hover:shadow-[0px_3px_0px_rgb(215_178_255_/_1)] transition"
-                    }`}
-                    onClick={() => setItemsDisplay("list")}
-                  >
-                    <FaListOl />
-                  </button>
 
-                  <button
-                    className={`h-8 px-2 rounded-r-md ${
-                      itemsDisplay === "grid"
-                        ? "bg-purple-400 text-white shadow-[0px_6px_0px_rgb(110_17_176_/_1)]"
-                        : "bg-purple-200 shadow-[0px_6px_0px_rgb(215_178_255_/_1)] text-black/30 hover:text-black/50 hover:shadow-[0px_2px_0px_rgb(215_178_255_/_1)] transition"
-                    }`}
-                    onClick={() => setItemsDisplay("grid")}
-                  >
-                    <IoGrid />
-                  </button>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <div className="flex justify-center items-center ">
-                  <div className="w-[2px] h-6 bg-emerald-300"></div>
-                </div>
                 <button
-                  className="bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 w-20 mx-auto font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_2px_0px_rgb(252_200_0_/_1)] rounded transition cursor-pointer"
-                  onClick={logout}
+                  className={`h-8 px-2 rounded-r-md ${
+                    itemsDisplay === "grid"
+                      ? "bg-purple-400 text-white shadow-[0px_3px_0px_rgb(110_17_176_/_1)]"
+                      : "bg-purple-200 shadow-[0px_6px_0px_rgb(215_178_255_/_1)] text-black/30 hover:text-black/50 hover:shadow-[0px_3px_0px_rgb(215_178_255_/_1)] transition"
+                  }`}
+                  onClick={() => setItemsDisplay("grid")}
                 >
-                  logout
+                  <IoGrid />
                 </button>
               </div>
+              <Filters
+                genres={genres}
+                handleGenre={handleGenre}
+                handlePlatform={handlePlatform}
+              />
+
+              {/* ADD NEW GAME */}
+              <button
+                className="rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 w-8 h-8 font-bold active:bg-yellow-300 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
+                onClick={() => setModal("new")}
+              >
+                +
+              </button>
             </div>
           </div>
 

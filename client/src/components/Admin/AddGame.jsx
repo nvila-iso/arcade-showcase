@@ -1,5 +1,7 @@
 import { useAuth } from "../../context/AuthContext";
 import { MdGamepad } from "react-icons/md";
+import { IoClose } from "react-icons/io5";
+
 
 const AddGame = ({ setNewGameModal, fetchGames, genres, setModal }) => {
   const { token } = useAuth();
@@ -42,18 +44,18 @@ const AddGame = ({ setNewGameModal, fetchGames, genres, setModal }) => {
 
   return (
     <>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-200 rounded w-[350px] h-[500px] border-3 border-purple-800 shadow-[5px_4px_0px_rgb(0_0_0_/_1)]">
-        <div className="flex h-10 w-full justify-between bg-purple-500 items-center px-3 text-white">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-200 rounded w-[350px] h-[500px] shadow-[5px_4px_0px_rgb(0_0_0_/_1)]">
+        <div className="flex h-10 w-full justify-between bg-purple-500 items-center px-3 text-white rounded-t">
           <div className="flex items-center gap-1">
             <MdGamepad />
             <p className="font-semibold">ADD NEW GAME</p>
           </div>
 
           <button
-            className="w-6 h-6 shadow-[4px_3px_0px_rgb(0_0_0_/_1)] hover:shadow-none bg-red-400 hover:bg-red-500 transition"
+            className="w-6 h-6 shadow-[0px_3px_0px_rgb(0_0_0_/_1)] hover:shadow-none bg-red-400 hover:bg-red-500 rounded transition flex justify-center items-center"
             onClick={() => setModal("")}
           >
-            X
+            <IoClose />
           </button>
         </div>
 
@@ -63,31 +65,31 @@ const AddGame = ({ setNewGameModal, fetchGames, genres, setModal }) => {
               type="text"
               name="name"
               placeholder="Game Name"
-              className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+              className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               required
             />
             <input
               type="text"
               name="img"
               placeholder="Image URL (manual)"
-              className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+              className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               required
             />
             <input
               type="text"
               name="alt"
               placeholder="Image Alt (desc)"
-              className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+              className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
             />
             <input
               type="url"
               name="url"
-              className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+              className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               placeholder="Youtube URL"
             />
             <select
               name="platform"
-              className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+              className="w-full rounded-full px-3 py-2 bg-purple-100  hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
               required
             >
               <option value="">--Select Platform</option>
@@ -96,7 +98,7 @@ const AddGame = ({ setNewGameModal, fetchGames, genres, setModal }) => {
             </select>
             <select
               name="genre"
-              className="border-2 w-full rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)] hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition"
+              className="w-full rounded-full px-3 py-2 bg-purple-100 hover:bg-white hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
             >
               <option value="">--Select Genre</option>
               {genres.map((g) => (
@@ -105,7 +107,7 @@ const AddGame = ({ setNewGameModal, fetchGames, genres, setModal }) => {
                 </option>
               ))}
             </select>
-            <div className="flex gap-1 items-center border-2 rounded px-3 py-2 border-purple-500 shadow-[4px_3px_0px_rgb(226_77_93_/_1)]  hover:shadow-[0px_3px_0px_rgb(226_77_93_/_1)] hover:bg-white/60 focus:bg-white transition">
+            <div className="flex items-center bg-purple-100 gap-3 px-3 py-2 rounded-full hover:shadow-[0px_6px_0px_rgb(218_178_255_/_1)] focus:shadow-[0px_6px_0px_rgb(194_122_255_/_1)] hover:bg-white focus:bg-white transition">
               <p>Active: </p>
               <input type="checkbox" name="status" />
             </div>
