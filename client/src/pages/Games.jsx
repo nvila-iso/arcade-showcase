@@ -1,4 +1,16 @@
 import { useState, useEffect, useMemo } from "react";
+import Navbar from "../components/Client/NavBar";
+import { GiPinballFlipper } from "react-icons/gi";
+import { BsJoystick } from "react-icons/bs";
+import { FaHandBackFist } from "react-icons/fa6"; // Fighting
+import { FaMusic } from "react-icons/fa"; // Rhythm
+import { GiRayGun } from "react-icons/gi"; // Light Gun
+import { FaSpaceAwesome } from "react-icons/fa6"; // Shmups
+import { MdOutlineSportsMartialArts } from "react-icons/md"; // Beat-em
+import { FaPuzzlePiece } from "react-icons/fa"; // Puzzle
+import { GiLaddersPlatform } from "react-icons/gi"; // Platformer
+import { FaGhost } from "react-icons/fa"; // Retired
+import { GiAquarium } from "react-icons/gi"; // Other
 import { Link } from "react-router";
 
 const Games = () => {
@@ -8,6 +20,77 @@ const Games = () => {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedPlatform, setSelectedPlatform] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const genreColor = (genre) => {
+    let color;
+
+    switch (genre) {
+      case "Fighting":
+        color = "bg-yellow-300 hover:bg-yellow-200 ";
+        break;
+      case "Rhythm":
+        color = "bg-blue-300 hover:bg-blue-200";
+        break;
+      case "Light Gun":
+        color = "bg-orange-300 hover:bg-orange-200";
+        break;
+      case "STG (Shmups)":
+        color = "bg-red-300 hover:bg-red-200";
+        break;
+      case "Beat-Em-Ups":
+        color = "bg-zinc-300 hover:bg-zinc-200";
+        break;
+      case "Puzzle":
+        color = "bg-pink-300 hover:bg-pink-200";
+        break;
+      case "Platformer":
+        color = "bg-purple-500 hover:bg-purple-400";
+        break;
+      case "EXA-Arcadia STGs":
+        color = "bg-stone-300 hover:bg-stone-200";
+        break;
+      default:
+        color = "bg-green-300 hover:bg-green-200";
+        break;
+    }
+
+    return color;
+  };
+
+  const genreIcon = (genre) => {
+    let icon;
+    switch (genre) {
+      case "Fighting":
+        icon = <FaHandBackFist />;
+        break;
+      case "Rhythm":
+        icon = <FaMusic />;
+        break;
+      case "Light Gun":
+        icon = <GiRayGun />;
+        break;
+      case "STG (Shmups)":
+        icon = <FaSpaceAwesome />;
+        break;
+      case "Beat-Em-Ups":
+        icon = <MdOutlineSportsMartialArts />;
+        break;
+      case "Puzzle":
+        icon = <FaPuzzlePiece />;
+        break;
+      case "Platformer":
+        icon = <GiLaddersPlatform />;
+        break;
+      case "EXA-Arcadia STGs":
+        icon = <FaGhost />;
+        break;
+      default:
+        icon = <GiAquarium />;
+        break;
+    }
+
+    return icon;
+  };
 
   const fetchGames = async () => {
     try {
@@ -80,23 +163,8 @@ const Games = () => {
 
   return (
     <div className="h-screen w-full flex flex-col items-center px-5 py-10 overflow-hidden">
-      <div className="bg-black/20 border-2 border-black rounded-t-lg w-full max-w-4xl flex justify-center items-center gap-5 flex-shrink-0">
-        <Link to="/">
-          <p className="text-white font-bold md:text-2xl hover:text-[#E4494F] transition">
-            HOME
-          </p>
-        </Link>
-        <p className="relative bottom-5 text-2xl md:text-5xl text-[#E4494F] font-bold text-shadow-[2px_2px_0px_rgb(4_45_77_/_1)] md:text-shadow-[3px_3px_0px_rgb(4_45_77_/_1)] bg-yellow-400 rounded-2xl border-2 border-black/80 py-2 px-3 shadow-[0_5px_0px_rgba(0,0,0,.5)]">
-          GAMES
-        </p>
-        <Link to="/events">
-          <p className="text-white font-bold md:text-2xl hover:text-[#E4494F] transition">
-            EVENTS
-          </p>
-        </Link>
-      </div>
-
-      <div className="w-full bg-[#FDB827] border-l-2 border-r-2 border-b-2 rounded-b-lg max-w-4xl pt-5 px-3 pb-5 flex flex-col flex-1 min-h-0 overflow-hidden texture">
+      <div className="w-full bg-black/10 border-2 rounded-lg max-w-4xl pt-5 px-3 pb-5 flex flex-col flex-1 min-h-0 overflow-hidden">
+        <Navbar/>
         <input
           type="text"
           onChange={(e) => {
@@ -104,13 +172,13 @@ const Games = () => {
             setGameSearch(e.target.value);
           }}
           value={gameSearch}
-          className="w-full h-12 rounded-full bg-white border-2 px-5 flex-shrink-0 shadow-[0_5px_2px_rgba(152,178,175,.65)]"
-          placeholder="SEARCH . . ."
+          className="mt-5 mx-auto w-full md:w-[70%] bg-emerald-200 px-4 py-1 shadow-[0px_6px_0px_rgb(0_212_146_/_1)] hover:shadow-[0px_3px_0px_rgb(0_212_146_/_1)] hover:bg-white focus:bg-white focus:shadow-[0px_0px_0px_rgb(0_212_146_/_1)] transition rounded-full"
+          placeholder="Search . . ."
         />
 
-        <div className="mt-5 grid grid-cols-2 gap-5 flex-shrink-0">
+        <div className="mt-5 grid grid-cols-2 gap-5 flex-shrink-0 md:w-[70%] mx-auto">
           <select
-            className="border border-black px-2 h-10 bg-white rounded shadow-[0_5px_0px_rgba(152,178,175,.65)]"
+            className="w-full rounded px-3 py-2 bg-purple-300 shadow-[0px_6px_0px_rgb(194_122_255_/_1)] hover:shadow-[0px_3px_0px_rgb(194_122_255_/_1)] hover:bg-white focus:shadow-[0px_0px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
             value={selectedPlatform}
             onChange={(e) => setSelectedPlatform(e.target.value)}
           >
@@ -122,7 +190,7 @@ const Games = () => {
             ))}
           </select>
           <select
-            className="border border-black px-2 h-10 bg-white rounded shadow-[0_5px_0px_rgba(152,178,175,.65)]"
+            className="w-full rounded px-3 py-2 bg-purple-300 shadow-[0px_6px_0px_rgb(194_122_255_/_1)] hover:shadow-[0px_3px_0px_rgb(194_122_255_/_1)] hover:bg-white focus:shadow-[0px_0px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
             value={selectedGenre}
             onChange={(e) => setSelectedGenre(e.target.value)}
           >
@@ -134,23 +202,42 @@ const Games = () => {
             ))}
           </select>
         </div>
+        <div className="mx-auto mt-5 grid gap-5 md:grid-cols-2 px-10 overflow-auto min-h-0 flex-1">
+          {currentGames
+            .filter((g) => g.status !== false)
+            .map((game, i) => (
+              <div className="rounded-md flex flex-col items-center w-74 h-64 bg-purple-400 shadow-[0px_2px_1px_rgb(0_0_0_/_.5)] hover:scale-105 hover:shadow-[0px_3px_2px_rgb(0_0_0_/_.2)] transition">
+                <div className="h-34 overflow-hidden bg-black w-full rounded-t-md flex justify-center items-center">
+                  <img
+                    src={game.img}
+                    alt={game.alt}
+                    className="object-center w-full"
+                  />
+                </div>
+                <p className="p-1 shadow-sm bg-yellow-300 text-center w-full font-semibold">
+                  {game.name}
+                </p>
 
-        <div className="mt-5 py-5 grid grid-cols-1 md:grid-cols-2 gap-5 flex-1 overflow-y-auto min-h-0">
-          {currentGames.filter((g) => g.status !== false).map((game, i) => (
-            <div
-              key={i}
-              className="w-[90%] h-35 md:h-50 mx-auto flex flex-col justify-center bg-black/30 items-center text-center border-3 border-black rounded-lg hover:scale-105 hover:shadow-[0_3px_5px_rgba(152,178,175,.65)] transition"
-            >
-              <p className="font-semibold rounded-t-lg w-full bg-[#E4494F]">
-                {game.name}
-              </p>
-              <img
-                src={game.img}
-                alt={game.alt}
-                className="object-cover overflow-hidden h-40 w-full"
-              />
-            </div>
-          ))}
+                <div className="flex justify-center mt-8 scale-120 items-center gap-3">
+                  <div className="flex items-center gap-1 bg-purple-200 hover:bg-purple-100 shadow-[0px_1px_1px_rgb(0_0_0_/_.5)] hover:shadow-[0px_0px_0px_rgb(0_0_0_/_.5)] px-2 text-sm py-1 rounded-sm transition">
+                    {game.platform === "Arcade" ? (
+                      <BsJoystick />
+                    ) : (
+                      <GiPinballFlipper />
+                    )}
+                    <p>{game.platform}</p>
+                  </div>
+                  <div
+                    className={`${genreColor(
+                      game.genre
+                    )} rounded-sm px-2 py-1 text-sm flex items-center gap-1 shadow-[0px_1px_1px_rgb(0_0_0_/_.5)] hover:shadow-[0px_0px_0px_rgb(0_0_0_/_.5)] transition`}
+                  >
+                    <p>{genreIcon(game.genre)}</p>
+                    <p>{game.genre}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
 
         {/* PAGINATION */}
@@ -158,7 +245,7 @@ const Games = () => {
           <button
             onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
             disabled={currentPage === 1}
-            className="px-3 py-1 rounded border border-black disabled:opacity-40 hover:bg-[#E4494F] hover:text-black transition"
+            className="rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 px-2 font-bold active:bg-yellow-300 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
           >
             Prev
           </button>
@@ -179,10 +266,10 @@ const Games = () => {
                 <button
                   key={i}
                   onClick={() => setCurrentPage(i)}
-                  className={`px-3 py-1 border rounded ${
+                  className={`px-3 py-1 rounded ${
                     currentPage === i
-                      ? "bg-[#E4494F] text-black"
-                      : "text-white hover:bg-[#E4494F] transition"
+                      ? "bg-purple-400 text-white shadow-[0px_3px_0px_rgb(110_17_176_/_1)]"
+                      : "bg-purple-200 shadow-[0px_6px_0px_rgb(215_178_255_/_1)] text-black/30 hover:text-black/50 hover:shadow-[0px_3px_0px_rgb(215_178_255_/_1)] transition"
                   }`}
                 >
                   {i}
@@ -195,7 +282,7 @@ const Games = () => {
           <button
             onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="px-3 py-1 rounded border border-black disabled:opacity-40 hover:bg-[#E4494F] hover:text-white transition"
+            className="rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 px-2 font-bold active:bg-yellow-300 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
           >
             Next
           </button>

@@ -1,38 +1,11 @@
-import { Link } from "react-router";
-import logo from "../assets/lostark-main-logo.png";
+import Navbar from "../components/Client/NavBar";
 
 const Pricing = () => {
   return (
     <>
-      <div className="h-screen min-h-0 w-full flex flex-col justify-center items-center px-5 py-10">
-        <div className="bg-black/20 border-2 border-black rounded-t-lg w-full max-w-4xl flex justify-center items-center gap-5 flex-shrink-0 px-5 h-20">
-          <Link to="/">
-            <p className="text-white font-bold md:text-2xl hover:text-[#E4494F] transition">
-              HOME
-            </p>
-          </Link>
-
-          <Link to="/">
-            <img src={logo} alt="Lost Ark Video Games" className="w-40 relative bottom-5" />
-          </Link>
-
-          <Link to="/games">
-            <p className="text-white font-bold md:text-2xl hover:text-[#E4494F] transition">
-              GAMES
-            </p>
-          </Link>
-        </div>
-
-        <div className="w-full bg-[#FDB827] border-l-2 border-r-2 border-b-2 rounded-b-lg max-w-4xl flex flex-col flex-1 min-h-0 overflow-auto px-2 py-6 texture-surface ">
-          <div className="w-full max-w-md mx-auto h-35 bg-[#E4494F] flex flex-col justify-center items-center rounded-xl border-5 relative">
-            <p className="font-lilita text-6xl font-black text-fuchsia-400 price-stroke text-shadow-[-3px_3px_0px_rgb(0_0_0_/_1)]">
-              ARCADIA
-            </p>
-            <p className="font-lilita text-4xl font-black text-sky-300 price-stroke text-shadow-[-3px_3px_0px_rgb(0_0_0_/_1)]">
-              PRICING
-            </p>
-          </div>
-
+    <div className="h-screen w-full flex flex-col items-center px-5 py-10 gap-5 overflow-hidden">
+      <div className="w-full bg-black/10 border-2 rounded-lg max-w-4xl pt-5 px-3 pb-5 flex flex-col flex-1 min-h-0 overflow-hidden">
+         <Navbar />
           <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 mt-3 md:w-[50%] mx-auto">
             <div className="bg-[#D7036B] text-center border-3 rounded-lg py-3 texture-surface flex flex-col">
               <p className="text-xl font-semibold text-[#F7E5B9] px-1">DAILY ENTRY:</p>

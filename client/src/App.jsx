@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "./layouts/RootLayout.jsx";
+import AdminLayout from "./layouts/AdminLayout.jsx";
 
 // Public Pages
 import Home from "./pages/Home.jsx";
@@ -9,6 +10,7 @@ import Photos from "./pages/Photos.jsx";
 import Events from "./pages/Events.jsx";
 
 // Admin Pages
+
 import Login from "./pages/auth/Login.jsx";
 import AdminPanel from "./pages/admin/AdminPanel.jsx";
 
@@ -22,7 +24,14 @@ const routes = [
       { path: "pricing", Component: Pricing },
       { path: "photos", Component: Photos },
       { path: "events", Component: Events },
-      { path: "login", Component: Login },
+    ],
+  },
+
+  {
+    path: "/login",
+    Component: AdminLayout,
+    children: [
+      { index: true, Component: Login },
       { path: "admin-panel", Component: AdminPanel },
     ],
   },

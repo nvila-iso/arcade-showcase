@@ -18,7 +18,7 @@ const Login = () => {
 
     try {
       await login(credentials);
-      navigate("/admin-panel");
+      navigate("admin-panel");
     } catch (error) {
       setError(error.message);
     }

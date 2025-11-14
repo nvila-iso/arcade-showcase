@@ -1,0 +1,51 @@
+import { Link, useLocation } from "react-router";
+
+const Navbar = () => {
+  const location = useLocation();
+  const isNavActive = (button) => {
+    let buttonDown =
+      " w-24 py-1 shadow-[0px_3px_0px_rgb(252_200_0_/_1)] text-red-400 bg-yellow-300";
+    let defaultButton =
+      "w-24 bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition cursor-pointer";
+    if (button === location.pathname) {
+      return buttonDown;
+    } else {
+      return defaultButton;
+    }
+  };
+
+  return (
+    <>
+      <div className="flex font-black text-center justify-center items-center">
+        <Link to="/">
+          <p className={`${isNavActive("/")} rounded-l`}>HOME</p>
+        </Link>
+        <Link to="/games">
+          <p
+            className={`${isNavActive(
+              "/games"
+            )} `}
+          >
+            GAMES
+          </p>
+        </Link>
+        <Link to="/pricing">
+          <p
+            className={`${isNavActive("/pricing")}`}
+          >
+            PRICING
+          </p>
+        </Link>
+        <Link to="/photos">
+          <p
+            className={`${isNavActive("/photos")} rounded-r`}
+          >
+            PHOTOS
+          </p>
+        </Link>
+      </div>
+    </>
+  );
+};
+
+export default Navbar;
