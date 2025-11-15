@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import arcadiaLogo from "../assets/arcadiamanor-logo.png";
 import Navbar from "../components/Client/NavBar";
 
 import character from "../assets/character-home.png";
@@ -6,14 +7,15 @@ import character from "../assets/character-home.png";
 const Home = () => {
   return (
     <div className="max-w-6xl flex flex-col overflow-hidden justify-center items-center mx-auto h-screen">
-      <div className="relative bottom-50 flex flex-col gap-3">
+      <div className="relative bottom-50 flex flex-col gap-3 items-center md:bottom-10">
+        {/* <img src={arcadiaLogo} alt="" className="size-40"/> */}
         <p className="text-red-400 font-lilita text-5xl text-shadow-[0px_6px_0px_rgb(0_0_0_/_1)]">
           ARCADIA MANOR
         </p>
         <Navbar />
       </div>
 
-      <div className="relative top-15 flex flex-col gap-3">
+      <div className="relative top-15 flex flex-col gap-3 md:left-10 md:top-0 md:bottom-250 ">
         <div className="flex flex-col p-8 border-3 border-blue-800 bg-purple-300/90 text-blue-800 font-black rounded w-[80%] mx-auto md:mx-0 texture shadow-md">
           <div className="text-center">
             <p className="text-2xl">OPERATING HOURS</p>
@@ -32,7 +34,11 @@ const Home = () => {
         </div>
       </div>
 
-      <img src={character} alt="" className="absolute bottom-0 mx-auto -z-1" />
+      <img
+        src={character}
+        alt=""
+        className="absolute bottom-0 mx-auto -z-1 md:h-240"
+      />
     </div>
   );
 };

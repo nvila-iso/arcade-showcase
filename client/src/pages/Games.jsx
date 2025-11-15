@@ -164,7 +164,7 @@ const Games = () => {
   return (
     <div className="h-screen w-full flex flex-col items-center px-5 py-10 overflow-hidden">
       <div className="w-full bg-black/10 border-2 rounded-lg max-w-4xl pt-5 px-3 pb-5 flex flex-col flex-1 min-h-0 overflow-hidden">
-        <Navbar/>
+        <Navbar />
         <input
           type="text"
           onChange={(e) => {
@@ -206,7 +206,7 @@ const Games = () => {
           {currentGames
             .filter((g) => g.status !== false)
             .map((game, i) => (
-              <div className="rounded-md flex flex-col items-center w-74 h-64 bg-purple-400 shadow-[0px_2px_1px_rgb(0_0_0_/_.5)] hover:scale-105 hover:shadow-[0px_3px_2px_rgb(0_0_0_/_.2)] transition">
+              <div className="rounded-md flex flex-col items-center w-74 h-70 bg-purple-400 shadow-[0px_2px_1px_rgb(0_0_0_/_.5)] hover:scale-105 hover:shadow-[0px_3px_2px_rgb(0_0_0_/_.2)] transition">
                 <div className="h-34 overflow-hidden bg-black w-full rounded-t-md flex justify-center items-center">
                   <img
                     src={game.img}
@@ -218,7 +218,7 @@ const Games = () => {
                   {game.name}
                 </p>
 
-                <div className="flex justify-center mt-8 scale-120 items-center gap-3">
+                <div className="flex justify-center scale-120 items-center gap-3 mt-5 mb-4">
                   <div className="flex items-center gap-1 bg-purple-200 hover:bg-purple-100 shadow-[0px_1px_1px_rgb(0_0_0_/_.5)] hover:shadow-[0px_0px_0px_rgb(0_0_0_/_.5)] px-2 text-sm py-1 rounded-sm transition">
                     {game.platform === "Arcade" ? (
                       <BsJoystick />
@@ -236,6 +236,11 @@ const Games = () => {
                     <p>{game.genre}</p>
                   </div>
                 </div>
+                <Link to={game.url} target="_blank">
+                  <button className="w-24 bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition cursor-pointer">
+                    Preview
+                  </button>
+                </Link>
               </div>
             ))}
         </div>
