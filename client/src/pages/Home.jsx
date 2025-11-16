@@ -6,16 +6,18 @@ import character from "../assets/character-home.png";
 
 const Home = () => {
   return (
-    <div className="max-w-6xl flex flex-col overflow-hidden justify-center items-center mx-auto h-screen">
-      <div className="flex flex-col items-center gap-5">
-        <p className="text-red-400 font-lilita text-5xl text-shadow-[0px_6px_0px_rgb(0_0_0_/_1)]">
-          ARCADIA MANOR
-        </p>
-        <Navbar />
+    <div className="max-w-6xl px-3 flex flex-col overflow-hidden justify-between gap-5 items-center mx-auto h-screen ">
+      <h1 className="relative border border-3 rounded-full px-5 py-2 bg-red-200 top-40 text-center text-red-400 font-lilita text-5xl text-shadow-[0px_6px_0px_rgb(0_0_0_/_1)] shadow-[0px_10px_0px_rgb(0_0_0_/_1)] inset-shadow-sm inset-shadow-red-300 hover:shadow-[0px_2px_0px_rgb(0_0_0_/_1)] transition">
+        ARCADIA MANOR
+      </h1>
+      <fieldset className="relative bottom-30 md:h-[30%] flex flex-col justify-center items-center py-5 md:px-5 border-3 border-black/80 rounded bg-black/20">
+        <legend className="mx-auto">
+          <Navbar />
+        </legend>
 
-        <div className="flex flex-col p-8 border-3 border-blue-800 bg-purple-300/90 text-blue-800 font-black rounded w-[80%] shadow-md">
+        <div className="w-sm flex flex-col px-3 border-3 border-purple-800 bg-purple-300/90 text-purple-800 font-black rounded shadow-sm">
           <div className="text-center">
-            <p className="text-2xl">OPERATING HOURS</p>
+            <p className="text-2xl italic">OPERATING HOURS</p>
             <p>THURS & FRI: 3PM - 12AM (MIDNIGHT)</p>
             <hr className="my-2" />
             <p>SATURDAY: 1PM - 12AM (MIDNIGHT)</p>
@@ -29,13 +31,9 @@ const Home = () => {
             MORE INFO
           </Link>
         </div>
-      </div>
-
-      <img
-        src={character}
-        alt=""
-        className="rotate-y-180 hidden md:inline absolute bottom-0 md:right-[24%] md:h-[100%] -z-1"
-      />
+        
+      </fieldset>
+      <img src={character} alt="" className="absolute bottom-0 -z-1"/>
     </div>
   );
 };
