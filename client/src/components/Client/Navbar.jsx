@@ -29,6 +29,15 @@ const Navbar = () => {
             GAMES
           </p>
         </Link>
+         <Link to="/events">
+          <p
+            className={`${isNavActive(
+              "/events"
+            )} `}
+          >
+            EVENTS
+          </p>
+        </Link>
         <Link to="/pricing">
           <p
             className={`${isNavActive("/pricing")}`}

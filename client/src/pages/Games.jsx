@@ -1,5 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
+import { Link } from "react-router";
 import Navbar from "../components/Client/NavBar";
+import Searchbar from "../components/Client/Searchbar";
+import Filters from "../components/Client/Filters";
+
+// ICONS
 import { GiPinballFlipper } from "react-icons/gi";
 import { BsJoystick } from "react-icons/bs";
 import { FaHandBackFist } from "react-icons/fa6"; // Fighting
@@ -11,7 +16,9 @@ import { FaPuzzlePiece } from "react-icons/fa"; // Puzzle
 import { GiLaddersPlatform } from "react-icons/gi"; // Platformer
 import { FaGhost } from "react-icons/fa"; // Retired
 import { GiAquarium } from "react-icons/gi"; // Other
-import { Link } from "react-router";
+
+// IMAGES
+import character from "../assets/character-gaming.png";
 
 const Games = () => {
   const [allGames, setAllGames] = useState([]);
@@ -108,18 +115,6 @@ const Games = () => {
     fetchGames();
   }, []);
 
-  const platforms = ["Arcade", "Pinball"];
-  const genres = [
-    "Fighting",
-    "Rhythm",
-    "Light Gun",
-    "STG (Shmups)",
-    "Beat-Em-Ups",
-    "Puzzle",
-    "Platformer",
-    "Other",
-  ];
-
   const normalize = (str) => {
     return str.toLowerCase().trim();
   };
@@ -165,43 +160,14 @@ const Games = () => {
     <div className="h-screen w-full flex flex-col items-center px-5 py-10 overflow-hidden">
       <div className="w-full bg-black/10 border-2 rounded-lg max-w-4xl pt-5 px-3 pb-5 flex flex-col flex-1 min-h-0 overflow-hidden">
         <Navbar />
-        <input
-          type="text"
-          onChange={(e) => {
-            e.preventDefault();
-            setGameSearch(e.target.value);
-          }}
-          value={gameSearch}
-          className="mt-5 mx-auto w-full md:w-[70%] bg-emerald-200 px-4 py-1 shadow-[0px_6px_0px_rgb(0_212_146_/_1)] hover:shadow-[0px_3px_0px_rgb(0_212_146_/_1)] hover:bg-white focus:bg-white focus:shadow-[0px_0px_0px_rgb(0_212_146_/_1)] transition rounded-full"
-          placeholder="Search . . ."
+        <Searchbar gameSearch={gameSearch} setGameSearch={setGameSearch} />
+        <Filters
+          selectedPlatform={selectedPlatform}
+          selectedGenre={selectedGenre}
+          setSelectedGenre={setSelectedGenre}
+          setSelectedPlatform={setSelectedPlatform}
         />
 
-        <div className="mt-5 grid grid-cols-2 gap-5 flex-shrink-0 md:w-[70%] mx-auto">
-          <select
-            className="w-full rounded px-3 py-2 bg-purple-300 shadow-[0px_6px_0px_rgb(194_122_255_/_1)] hover:shadow-[0px_3px_0px_rgb(194_122_255_/_1)] hover:bg-white focus:shadow-[0px_0px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
-            value={selectedPlatform}
-            onChange={(e) => setSelectedPlatform(e.target.value)}
-          >
-            <option value="">ALL PLATFORMS</option>
-            {platforms.map((p, i) => (
-              <option key={i} value={p}>
-                {p}
-              </option>
-            ))}
-          </select>
-          <select
-            className="w-full rounded px-3 py-2 bg-purple-300 shadow-[0px_6px_0px_rgb(194_122_255_/_1)] hover:shadow-[0px_3px_0px_rgb(194_122_255_/_1)] hover:bg-white focus:shadow-[0px_0px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
-            value={selectedGenre}
-            onChange={(e) => setSelectedGenre(e.target.value)}
-          >
-            <option value="">ALL GENRES</option>
-            {genres.map((g, i) => (
-              <option key={i} value={g}>
-                {g}
-              </option>
-            ))}
-          </select>
-        </div>
         <div className="mx-auto mt-5 grid gap-5 md:grid-cols-2 px-10 overflow-auto min-h-0 flex-1">
           {currentGames
             .filter((g) => g.status !== false)
@@ -237,7 +203,7 @@ const Games = () => {
                   </div>
                 </div>
                 <Link to={game.url} target="_blank">
-                  <button className="w-24 bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition cursor-pointer">
+                  <button className="w-24 bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] rounded transition cursor-pointer">
                     Preview
                   </button>
                 </Link>
@@ -293,6 +259,11 @@ const Games = () => {
           </button>
         </div>
       </div>
+      {/* <img
+        src={character}
+        alt=""
+        className="absolute hidden md:inline-block h-[60%] left-26 bottom-0 rotate-y-180"
+      /> */}
     </div>
   );
 };
