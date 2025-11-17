@@ -16,7 +16,7 @@ const Filters = ({
     "Other",
   ];
   return (
-    <div className="mt-5 grid grid-cols-2 gap-5 flex-shrink-0 md:w-[70%] mx-auto">
+    <div className="grid grid-cols-2 gap-5 flex-shrink-0 mx-auto">
       <select
         className="w-full rounded px-3 py-2 bg-purple-300 shadow-[0px_6px_0px_rgb(194_122_255_/_1)] hover:shadow-[0px_3px_0px_rgb(194_122_255_/_1)] hover:bg-white focus:shadow-[0px_0px_0px_rgb(194_122_255_/_1)] focus:bg-white transition"
         value={selectedPlatform}

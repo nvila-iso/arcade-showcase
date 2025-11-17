@@ -16,41 +16,22 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex font-black text-center justify-center items-center">
+      <div className="flex font-black text-center justify-center items-center shadow-xs">
         <Link to="/">
           <p className={`${isNavActive("/")} rounded-l`}>HOME</p>
         </Link>
+        <Link to="/info">
+          <p className={`${isNavActive("/info")}`}>INFO</p>
+        </Link>
         <Link to="/games">
-          <p
-            className={`${isNavActive(
-              "/games"
-            )} `}
-          >
-            GAMES
-          </p>
+          <p className={`${isNavActive("/games")} `}>GAMES</p>
         </Link>
-         <Link to="/events">
-          <p
-            className={`${isNavActive(
-              "/events"
-            )} `}
-          >
-            EVENTS
-          </p>
+        <Link to="/events">
+          <p className={`${isNavActive("/events")} `}>EVENTS</p>
         </Link>
-        <Link to="/pricing">
-          <p
-            className={`${isNavActive("/pricing")}`}
-          >
-            PRICING
-          </p>
-        </Link>
+
         <Link to="/photos">
-          <p
-            className={`${isNavActive("/photos")} rounded-r`}
-          >
-            PHOTOS
-          </p>
+          <p className={`${isNavActive("/photos")} rounded-r`}>PHOTOS</p>
         </Link>
       </div>
     </>

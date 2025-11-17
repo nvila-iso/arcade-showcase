@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import Navbar from "../components/Client/NavBar";
 import Searchbar from "../components/Client/Searchbar";
 import Filters from "../components/Client/Filters";
+import PageTemplate from "./PageTemplate";
 
 // ICONS
 import { GiPinballFlipper } from "react-icons/gi";
@@ -139,12 +140,14 @@ const Games = () => {
 
   const filteredList =
     selectedGenre.length > 0
-      ? searchList.filter((game) => game.genre === selectedGenre)
-      : searchList;
+      ? searchList.filter(
+          (game) => game.genre === selectedGenre && game.status !== false
+        )
+      : searchList.filter((game) => game.status !== false);
 
   // pagination
 
-  const itemsPerPage = 10; // display X amount of items per page
+  const itemsPerPage = 6; // display X amount of items per page
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -157,34 +160,34 @@ const Games = () => {
   }, [gameSearch, selectedGenre, selectedPlatform]);
 
   return (
-    <div className="h-screen w-full flex flex-col items-center px-5 py-10 overflow-hidden">
-      <div className="w-full bg-black/10 border-2 rounded-lg max-w-4xl pt-5 px-3 pb-5 flex flex-col flex-1 min-h-0 overflow-hidden">
-        <Navbar />
-        <Searchbar gameSearch={gameSearch} setGameSearch={setGameSearch} />
-        <Filters
-          selectedPlatform={selectedPlatform}
-          selectedGenre={selectedGenre}
-          setSelectedGenre={setSelectedGenre}
-          setSelectedPlatform={setSelectedPlatform}
-        />
+    <>
+      <PageTemplate>
+        <div className="w-full flex items-center flex-col md:flex-row gap-3">
+          <Searchbar gameSearch={gameSearch} setGameSearch={setGameSearch} />
+          <Filters
+            selectedPlatform={selectedPlatform}
+            selectedGenre={selectedGenre}
+            setSelectedGenre={setSelectedGenre}
+            setSelectedPlatform={setSelectedPlatform}
+          />
+        </div>
 
-        <div className="mx-auto mt-5 grid gap-5 md:grid-cols-2 px-10 overflow-auto min-h-0 flex-1">
-          {currentGames
-            .filter((g) => g.status !== false)
-            .map((game, i) => (
-              <div className="rounded-md flex flex-col items-center w-74 h-70 bg-purple-400 shadow-[0px_2px_1px_rgb(0_0_0_/_.5)] hover:scale-105 hover:shadow-[0px_3px_2px_rgb(0_0_0_/_.2)] transition">
-                <div className="h-34 overflow-hidden bg-black w-full rounded-t-md flex justify-center items-center">
-                  <img
-                    src={game.img}
-                    alt={game.alt}
-                    className="object-center w-full"
-                  />
-                </div>
-                <p className="p-1 shadow-sm bg-yellow-300 text-center w-full font-semibold">
-                  {game.name}
-                </p>
+        <div className="py-5 w-full grid justify-center gap-y-5 md:grid-cols-2 lg:grid-cols-3 overflow-y-auto">
+          {currentGames.map((game, i) => (
+            <div className="justify-self-center rounded-md flex flex-col items-center w-74 h-70 bg-purple-400 shadow-[0px_2px_1px_rgb(0_0_0_/_.5)] hover:scale-105 hover:shadow-[0px_3px_2px_rgb(0_0_0_/_.2)] transition">
+              <div className="h-34 overflow-hidden bg-black w-full rounded-t-md flex justify-center items-center">
+                <img
+                  src={game.img}
+                  alt={game.alt}
+                  className="object-center w-full"
+                />
+              </div>
+              <p className="p-1 shadow-sm bg-yellow-300 text-center w-full font-semibold">
+                {game.name}
+              </p>
 
-                <div className="flex justify-center scale-120 items-center gap-3 mt-5 mb-4">
+              <div className="mt-2 flex flex-col justify-evenly items-center gap-2">
+                <div className="flex gap-3">
                   <div className="flex items-center gap-1 bg-purple-200 hover:bg-purple-100 shadow-[0px_1px_1px_rgb(0_0_0_/_.5)] hover:shadow-[0px_0px_0px_rgb(0_0_0_/_.5)] px-2 text-sm py-1 rounded-sm transition">
                     {game.platform === "Arcade" ? (
                       <BsJoystick />
@@ -202,27 +205,27 @@ const Games = () => {
                     <p>{game.genre}</p>
                   </div>
                 </div>
+
                 <Link to={game.url} target="_blank">
                   <button className="w-24 bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] rounded transition cursor-pointer">
                     Preview
                   </button>
                 </Link>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
-
-        {/* PAGINATION */}
-        <div className="flex justify-center gap-2 mt-5 flex-shrink-0">
+        <div className="flex flex-1 items-center justify-center gap-2 flex-shrink-0">
           <button
             onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
             disabled={currentPage === 1}
-            className="rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 px-2 font-bold active:bg-yellow-300 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
+            className="rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 py-1 px-2 font-bold active:bg-yellow-300 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
           >
             Prev
           </button>
 
           {(() => {
-            const maxVisible = 4;
+            const maxVisible = 6;
             const half = Math.floor(maxVisible / 2);
             let start = Math.max(1, currentPage - half);
             let end = Math.min(totalPages, start + maxVisible - 1);
@@ -253,18 +256,13 @@ const Games = () => {
           <button
             onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 px-2 font-bold active:bg-yellow-300 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
+            className="rounded text-yellow-900 hover:bg-yellow-300 hover:text-red-400 bg-yellow-200 py-1 px-2 font-bold active:bg-yellow-300 shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition"
           >
             Next
           </button>
         </div>
-      </div>
-      {/* <img
-        src={character}
-        alt=""
-        className="absolute hidden md:inline-block h-[60%] left-26 bottom-0 rotate-y-180"
-      /> */}
-    </div>
+      </PageTemplate>
+    </>
   );
 };
 
