@@ -1,6 +1,6 @@
 import Navbar from "../components/Client/Navbar.jsx";
 
-const PageTemplate = ({ children, className = "" }) => {
+const PageTemplate = ({ children }) => {
   return (
     <div className="w-screen h-screen px-3 py-5 flex flex-col justify-center items-center ">
       <div className="w-full h-[1000px] flex flex-col justify-center items-center gap-5">

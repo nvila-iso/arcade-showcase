@@ -41,7 +41,7 @@ const Login = () => {
               <input
                 required
                 name="password"
-                type="text"
+                type="password"
                 className="w-full rounded-full px-3 py-2 bg-white hover:bg-white hover:shadow-[0px_6px_0px_rgb(212_212_216_/_1)] focus:shadow-[0px_6px_0px_rgb(212_212_216_/_1)] focus:bg-white transition"
                 placeholder="password"
               />
