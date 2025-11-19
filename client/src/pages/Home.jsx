@@ -13,6 +13,26 @@ const Home = () => {
         </h1>
         <Navbar />
       </div>
+      {/* HIDDEN */}
+      <div className="hidden text-sm flex rounded-full row-1 col-span-3">
+        <p className="">
+          This unique space is an arcade experience like none other. Presented
+          by, and located beside Lost Ark Video Games, Arcadia Manor presents an
+          eclectic mixture of nostalgic favorites and exotic oddities.
+        </p>
+        <p>
+          Specializing in rarities from the Japanese arcade scene, you are sure
+          to discover something new.
+        </p>
+        <p>
+          Our pricing model features a flat rate membership, allowing the
+          adventurous to try everything we offer.{" "}
+        </p>
+        <p>
+          Not for the casual bar hopper or idle youth, Arcadia Manor is for
+          explorers in the further regions of experience.
+        </p>
+      </div>
 
       <div className="relative top-[20%] sm:top-[15%] flex flex-col items-center gap-5 ">
         <div className="w-full flex flex-col bg-black text-white rounded shadow-sm rounded">
@@ -30,7 +50,7 @@ const Home = () => {
           </div>
         </div>
         <Link
-          to="/pricing"
+          to="/info"
           className="scale-115 mx-auto w-30 h-8 text-center rounded bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition cursor-pointer"
         >
           MORE INFO

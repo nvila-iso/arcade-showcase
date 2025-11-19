@@ -23,14 +23,16 @@ const Photos = () => {
               className="group relative"
               aria-label={`Open ${p.alt || "image"}`}
             >
-              <img
-                src={p.url}
-                alt={p.alt || ""}
-                className="w-full aspect-video object-cover border-5 border-blue-800 rounded-sm transition-transform duration-300 group-hover:scale-105"
-              />
-              <span className="absolute bottom-1 right-1 text-[10px] bg-black/70 px-1 rounded">
-                View
-              </span>
+              <div>
+                <img
+                  src={p.url}
+                  alt={p.alt || ""}
+                  className="outline-2 outline-yellow-400 w-full aspect-video object-cover rounded transition hover:scale-105 hover:shadow-sm"
+                />
+                <span className="absolute bottom-3 right-4 text-xs bg-white/50 px-1 rounded">
+                  View
+                </span>
+              </div>
             </button>
           ))}
         </div>

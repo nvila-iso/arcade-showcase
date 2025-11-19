@@ -13,6 +13,7 @@ const Events = () => {
               <p className="flex justify-center items-center px-2 text-[#F7E5B9] text-3xl font-black text-center bg-[#E4494F] h-30 rounded-lg border-3 border-black shadow-[0_5px_0px_rgba(0,0,0,1)] texture">
                 NO EVENTS SCHEDULED
               </p>
+              <img src="" alt="" />
             </>
           ) : (
             <>
