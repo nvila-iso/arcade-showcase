@@ -15,7 +15,7 @@ const Photos = () => {
   return (
     <>
       <PageTemplate>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full overflow-auto px-2 py-1">
           {photoGallery.map((p, i) => (
             <button
               key={p.url ?? i}

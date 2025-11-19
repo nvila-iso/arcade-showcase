@@ -8,24 +8,21 @@ const Info = () => {
   return (
     <>
       <PageTemplate>
-        <div className="w-full grid grid-cols-3 grid-rows-3 gap-3">
+        <div className="w-full h-full flex flex-col items-center justify-between gap-3 pb-3">
           <img
             src={character}
             alt=""
-            className="absolute bottom-0 right-0 max-h-[65%] md:max-h-[75%] lg:max-h-[90%] rotate-y-180 lg:z-1"
+            className="absolute bottom-0 right-0 max-h-[72%] sm:max-h-[75%] md:max-h-[80%] lg:max-h-[90%] rotate-y-180 lg:z-1"
           />
 
-          <div className="row-1 col-start-1 col-span-3 md:col-span-4 lg:col-span-3 lg:w-3xl bg-red-100  rounded-md border-3 border-red-400 px-10 py-5 flex flex-col gap-1 shadow-sm">
-            <p className="hidden text-center text-2xl font-black text-zinc-600">
-              DETAILS
-            </p>
+          <div className="w-full sm:w-lg md:w-2xl sm:self-start lg:justify-self-center text-sm  md:text-base bg-red-100 rounded-md border-3 border-red-400 p-5 flex flex-col gap-1 shadow-sm">
             <Link
               to="https://maps.app.goo.gl/CRnde8GVLgxoMeRP6"
-              className="mx-auto mb-2 text-white text-center text-sm font-semibold cursor-pointer bg-red-400 rounded-full py-1 w-fit px-5 shadow-[0px_3px_0px_rgb(251_44_54_/_1)] hover:shadow-[0px_1px_0px_rgb(251_44_54_/_1)] transition"
+              className="w-xs md:w-sm text-xs md:text-sm mx-auto mb-2 text-white text-center font-semibold cursor-pointer bg-red-400 rounded-full py-2 px-3 shadow-[0px_3px_0px_rgb(251_44_54_/_1)] hover:shadow-[0px_1px_0px_rgb(251_44_54_/_1)] transition"
             >
               1701 Spring Garden St A, Greensboro, NC 27403
             </Link>
-            <table className="text-sm md:text-base py-3 rounded border-2 border-red-400 border-separate border-spacing-x-1 md:border-spacing-x-6 md:border-spacing-y-1">
+            <table className="text-xs sm:text-base py-3 rounded border-2 border-red-400 border-separate border-spacing-x-1 md:border-spacing-x-6 md:border-spacing-y-1">
               <thead>
                 <tr className="text-left text-red-400 font-semibold">
                   <th>DAYS</th>
@@ -51,13 +48,13 @@ const Info = () => {
                 </tr>
               </tbody>
             </table>
-            <p className="text-sm italic">
+            <p className="text-xs italic">
               ** membership & bulk admission available upon request
             </p>
           </div>
 
-          <div className="row-2 col-start-1 col-span-2 md:justify-self-center lg:justify-self-end z-2 w-sm md:w-md lg:w-lg">
-            <p className="rounded-t text-xl w-full text-center font-black text-white bg-red-400 px-5 py-1 ">
+          <div className="sm:self-start z-2 md:w-md lg:w-lg">
+            <p className="rounded-t text-lg w-full text-center font-black text-white bg-red-400 py-1 ">
               COMMANDMENTS OF ARCADIA
             </p>
             <div className="rounded-b shadow-md text-sm md:text-base bg-black px-10 py-2 font-semibold texture-surface text-white">
@@ -70,9 +67,8 @@ const Info = () => {
               <p>💀 NO MERCY FOR THE MEEK</p>
             </div>
           </div>
-             <img src={logo} alt="" className="absolute bottom-20 md:bottom-10 md:left-20 lg:bottom-1 lg:left-10 -z-1 w-[400px] md:w-[500px] lg:w-[600px]" />
+             <img src={logo} alt="" className="-z-1 absolute top-[25%] sm:top-[12%] md:top-[6%] lg:top-[0%] w-[90%] md:w-[75%] lg:w-[80%]" />
           </div>
-          <img src={cat} alt="" className="hidden" />
   
       </PageTemplate>
     </>

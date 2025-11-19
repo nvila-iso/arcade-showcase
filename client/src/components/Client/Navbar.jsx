@@ -4,9 +4,9 @@ const Navbar = () => {
   const location = useLocation();
   const isNavActive = (button) => {
     let buttonDown =
-      " w-24 py-1 shadow-[0px_3px_0px_rgb(252_200_0_/_1)] text-red-400 bg-yellow-300";
+      "w-20 sm:w-24 md:w-28 py-1 shadow-[0px_3px_0px_rgb(252_200_0_/_1)] text-red-400 bg-yellow-300";
     let defaultButton =
-      "w-24 bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition cursor-pointer";
+      "w-20 sm:w-24 md:w-28 bg-yellow-200 text-yellow-900 hover:text-red-400 hover:bg-yellow-300 py-1 font-semibold shadow-[0px_6px_0px_rgb(252_200_0_/_1)] hover:shadow-[0px_3px_0px_rgb(252_200_0_/_1)] transition cursor-pointer";
     if (button === location.pathname) {
       return buttonDown;
     } else {

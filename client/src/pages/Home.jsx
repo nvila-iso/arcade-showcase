@@ -1,12 +1,12 @@
 import { Link } from "react-router";
 import arcadiaLogo from "../assets/arcadiamanor-logo.png";
-import Navbar from "../components/Client/NavBar";
+import Navbar from "../components/Client/Navbar.jsx";
 
 import character from "../assets/character-home.png";
 
 const Home = () => {
   return (
-    <div className="mx-auto px-1 flex flex-col overflow-hidden justify-center items-center h-screen">
+    <div className="mx-auto py-10 px-1 flex flex-col overflow-hidden justify-center items-center h-screen">
       <div className="flex flex-col gap-5 items-center relative bottom-[20%] sm:bottom-[30%]">
         <h1 className="py-3 w-xs text-3xl flex items-center justify-center rounded-full bg-red-400 text-center text-white shadow-[0px_6px_0px_rgb(251_44_54_/_1)] hover:shadow-[0px_2px_0px_rgb(251_44_54_/_1)] font-black transition">
           ARCADIA MANOR
