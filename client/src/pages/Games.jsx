@@ -171,8 +171,9 @@ const Games = () => {
           />
         </div>
 
-        <div className="mt-3 lg:mt-8 pt-2 w-full   grid justify-center gap-y-5 md:grid-cols-2 lg:grid-cols-3 overflow-y-auto">
-          {currentGames.map((game, i) => (
+        <div className="overflow-y-auto mt-3 pt-2 w-full grid justify-center gap-y-5 md:grid-cols-2 lg:grid-cols-3">
+
+          {currentGames.map((game) => (
             <div className="justify-self-center rounded-md flex flex-col items-center w-74 h-70 bg-purple-400 shadow-[0px_2px_1px_rgb(0_0_0_/_.5)] hover:scale-105 hover:shadow-[0px_3px_2px_rgb(0_0_0_/_.2)] transition">
               <div className="h-34 overflow-hidden bg-black w-full rounded-t-md flex justify-center items-center">
                 <img
