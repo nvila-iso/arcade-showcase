@@ -15,7 +15,7 @@ const Photos = () => {
   return (
     <>
       <PageTemplate>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full overflow-auto px-2 py-1">
+        <div className="h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full overflow-auto px-3 py-1">
           {photoGallery.map((p, i) => (
             <button
               key={p.url ?? i}
@@ -29,9 +29,9 @@ const Photos = () => {
                   alt={p.alt || ""}
                   className="outline-2 outline-yellow-400 w-full aspect-video object-cover rounded transition hover:scale-105 hover:shadow-sm"
                 />
-                <span className="absolute bottom-3 right-4 text-xs bg-white/50 px-1 rounded">
+                {/* <span className="absolute bottom-3 right-4 text-xs bg-white/50 px-1 rounded">
                   View
-                </span>
+                </span> */}
               </div>
             </button>
           ))}

@@ -14,7 +14,7 @@ const PageTemplate = ({ children }) => {
               <Navbar />
             </legend>
 
-            <div className="flex-1 flex flex-col items-center min-h-0 px-5">
+            <div className="flex-1 flex flex-col items-center min-h-0 px-5 py-2">
               {children}
             </div>
           </fieldset>

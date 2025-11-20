@@ -217,7 +217,7 @@ const Games = () => {
         </div>
 
         {/* PAGINATION */}
-        <div className="flex flex-1 items-center justify-center gap-2 flex-shrink-0 py-5">
+        <div className="flex flex-1 items-center justify-center gap-2 flex-shrink-0 pt-3 pb-1">
           <button
             onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
             disabled={currentPage === 1}
